@@ -1,0 +1,29 @@
+spring:
+  application:
+    name:  api-gateway-ms
+server:
+  port: 8321
+zuul:
+  routes:
+    login-ms:
+      path: /login/**
+      service-id: login-ms
+    booking-ms:
+      path: /booking/**
+      service-id: booking-ms 
+    flight-ms:
+      path: /flight/**
+      service-id: flight-ms
+    schedule-ms:
+      path: /schedule/**
+      service-id: schedule-ms 
+    airport-ms:
+      path: /airport/**
+      service-id: airport-ms 
+    passenger-ms:
+      path: /passenger/**
+      service-id: passenger-ms
+      
+      
+      
+    
