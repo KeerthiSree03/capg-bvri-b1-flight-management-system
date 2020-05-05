@@ -6,7 +6,7 @@ server:
 zuul:
   routes:
     login-ms:
-      path: /login/**
+      path: /users/**
       service-id: login-ms
     booking-ms:
       path: /booking/**
