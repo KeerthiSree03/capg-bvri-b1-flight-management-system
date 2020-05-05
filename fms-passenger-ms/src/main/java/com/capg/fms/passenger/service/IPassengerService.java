@@ -3,6 +3,7 @@ package com.capg.fms.passenger.service;
 import java.util.List;
 
 import com.capg.fms.passenger.model.Passenger;
+import com.capg.fms.passenger.model.PassengerList;
 
 public interface IPassengerService {
 
@@ -10,7 +11,8 @@ public interface IPassengerService {
 	Passenger addPassenger(Passenger passenger);
 	boolean deletePassenger(long passengerNum);
 	Passenger getPassenger(long passengerNum);
-	List<Passenger> getAllPasssengers();
+	PassengerList getAllPasssengers();
 	Passenger updatePassenger(Passenger passenger);
+	public long getCountOfPassenger();
 //	 Passenger getByPassengerName(String passengerName);
 }

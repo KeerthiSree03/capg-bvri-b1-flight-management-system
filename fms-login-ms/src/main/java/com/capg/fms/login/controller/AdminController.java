@@ -43,6 +43,8 @@ public class AdminController {
 	@PostMapping("scheduleflight/add")
 	public ScheduledFlight addScheduledFlight(@RequestBody ScheduledFlight scheduledFlight) {
 		
+		
+		
 		return service.addScheduledFlight(scheduledFlight);
 	}
 	@GetMapping("scheduleflight/id/{scheduledFlightId}")

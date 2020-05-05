@@ -13,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.capg.fms.schedule.excepions.ScheduledFlightNotFound;
 import com.capg.fms.schedule.model.Airport;
+import com.capg.fms.schedule.model.Flight;
 import com.capg.fms.schedule.model.Schedule;
 import com.capg.fms.schedule.model.ScheduledFlight;
 import com.capg.fms.schedule.repository.IScheduleRepo;
@@ -35,11 +36,15 @@ public class ScheduleServiceImpl implements IScheduleService {
 		
 		String sourceAirportName = scheduledFlight.getSchedule().getSourceAirport();
 		String destinationAirportName = scheduledFlight.getSchedule().getDestinationAirport();
+		long flightNumber = scheduledFlight.getFlightNumber();
 		
 		System.err.println(sourceAirportName);
 		System.err.println(destinationAirportName);
+		System.err.println(scheduledFlight.getSchedule().getArrivalTime());
+		System.err.println(scheduledFlight.getSchedule().getDepartureTime());
 		Airport sourceAirport = restTemplate.getForObject("http://airport-ms/airport/airportname/"+sourceAirportName, Airport.class);
 		Airport destinationAirport  = restTemplate.getForObject("http://airport-ms/airport/airportname/"+destinationAirportName, Airport.class);
+		Flight flightNumberFromFlight = restTemplate.getForObject("http://flight-ms/flights/id/"+flightNumber, Flight.class);
 		
 		if (sourceAirport.equals(destinationAirport)) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
@@ -48,9 +53,15 @@ public class ScheduleServiceImpl implements IScheduleService {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 		
+		if (flightNumberFromFlight == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		
+		System.err.println(scheduledFlight.getSchedule().getSourceAirport());
+		
 		return repo.save(scheduledFlight);
 	}
-
+ 
 	@Override
 	public ScheduledFlight viewScheduledFlight(int scheduleId) {
 		// TODO Auto-generated method stub

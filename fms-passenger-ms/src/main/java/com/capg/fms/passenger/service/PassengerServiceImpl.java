@@ -11,6 +11,7 @@ import com.capg.fms.passenger.exceptions.EmptyPassengerListException;
 import com.capg.fms.passenger.exceptions.PassengerAlreadyExistException;
 import com.capg.fms.passenger.exceptions.PassengerNotFoundException;
 import com.capg.fms.passenger.model.Passenger;
+import com.capg.fms.passenger.model.PassengerList;
 import com.capg.fms.passenger.repository.IPassengerRepo;
 
 @Service
@@ -54,10 +55,10 @@ import com.capg.fms.passenger.repository.IPassengerRepo;
 		
 		@Override
 		@Transactional
-		public List<Passenger> getAllPasssengers() {
-			 if(passengerRepo.count()==0)
-			    	throw new EmptyPassengerListException("No Passenger Found in Passenger Database");
-				return passengerRepo.findAll();
+		public PassengerList getAllPasssengers() {
+			
+			
+			return new PassengerList(passengerRepo.findAll());
 		}
 
 
@@ -80,4 +81,9 @@ import com.capg.fms.passenger.repository.IPassengerRepo;
 			return newPassenger;	
 		}
 
+		
+		public long getCountOfPassenger() {
+			
+			return passengerRepo.count();
+		}
 }
