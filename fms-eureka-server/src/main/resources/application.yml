@@ -3,7 +3,6 @@ spring:
     name: eureka-server-ms
 server:
   port: 8761
-  
 eureka:
   client:
     register-with-eureka: false
