@@ -34,30 +34,34 @@ public class ScheduleServiceImpl implements IScheduleService {
 	@Override
 	public ScheduledFlight addScheduleFlight(ScheduledFlight scheduledFlight) {
 		
-		String sourceAirportName = scheduledFlight.getSchedule().getSourceAirport();
-		String destinationAirportName = scheduledFlight.getSchedule().getDestinationAirport();
-		long flightNumber = scheduledFlight.getFlightNumber();
 		
-		System.err.println(sourceAirportName);
-		System.err.println(destinationAirportName);
-		System.err.println(scheduledFlight.getSchedule().getArrivalTime());
-		System.err.println(scheduledFlight.getSchedule().getDepartureTime());
-		Airport sourceAirport = restTemplate.getForObject("http://airport-ms/airport/airportname/"+sourceAirportName, Airport.class);
-		Airport destinationAirport  = restTemplate.getForObject("http://airport-ms/airport/airportname/"+destinationAirportName, Airport.class);
-		Flight flightNumberFromFlight = restTemplate.getForObject("http://flight-ms/flights/id/"+flightNumber, Flight.class);
-		
-		if (sourceAirport.equals(destinationAirport)) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-		}
-		if (sourceAirport == null || destinationAirport ==null) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-		}
-		
-		if (flightNumberFromFlight == null) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
-		
-		System.err.println(scheduledFlight.getSchedule().getSourceAirport());
+		  String sourceAirportName = scheduledFlight.getSchedule().getSourceAirport();
+		  String destinationAirportName =
+		  scheduledFlight.getSchedule().getDestinationAirport(); long flightNumber =
+		  scheduledFlight.getFlightNumber();
+		  
+		  System.err.println(sourceAirportName);
+		  System.err.println(destinationAirportName);
+		  System.err.println(scheduledFlight.getSchedule().getArrivalTime());
+		  System.err.println(scheduledFlight.getSchedule().getDepartureTime()); Airport
+		  sourceAirport =
+		  restTemplate.getForObject("http://airport-ms/airport/airportname/"+
+		  sourceAirportName, Airport.class); Airport destinationAirport =
+		  restTemplate.getForObject("http://airport-ms/airport/airportname/"+
+		  destinationAirportName, Airport.class); Flight flightNumberFromFlight =
+		  restTemplate.getForObject("http://flight-ms/flights/id/"+flightNumber,
+		  Flight.class);
+		  
+		  if (sourceAirport.equals(destinationAirport)) { throw new
+		  ResponseStatusException(HttpStatus.BAD_REQUEST); } if (sourceAirport == null
+		  || destinationAirport ==null) { throw new
+		  ResponseStatusException(HttpStatus.BAD_REQUEST); }
+		  
+		  if (flightNumberFromFlight == null) { throw new
+		  ResponseStatusException(HttpStatus.NOT_FOUND); }
+		 
+		  System.err.println(scheduledFlight.getSchedule().getSourceAirport());
+		 
 		
 		return repo.save(scheduledFlight);
 	}

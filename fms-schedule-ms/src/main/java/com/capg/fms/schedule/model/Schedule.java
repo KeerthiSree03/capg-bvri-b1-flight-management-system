@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.client.RestTemplate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 public class Schedule {
 	
@@ -32,9 +34,11 @@ public class Schedule {
 	
 	@Column(name = "arrivalTime")
 	@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")
+	//@JsonFormat(pattern = "yyyy/MM/ddThh:mm:ss")
 	private LocalDateTime arrivalTime;
 	@Column(name = "departureTime")
 	@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")
+	//@JsonFormat(pattern = "yyyy/MM/ddThh:mm:ss")
 	private LocalDateTime departureTime;
 
 	public Schedule() {

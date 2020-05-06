@@ -8,6 +8,8 @@ import javax.persistence.Id;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Schedule {
 
 	
@@ -24,8 +26,10 @@ public class Schedule {
 	private String destinationAirport;
 	
 	@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")
+	//@JsonFormat(pattern = "yyyy/MM/ddThh:mm:ss")
 	private LocalDateTime arrivalTime;
 	@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")
+	//@JsonFormat(pattern = "yyyy/MM/ddThh:mm:ss")
 	private LocalDateTime departureTime;
 
 	public Schedule() {
@@ -33,8 +37,8 @@ public class Schedule {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Schedule(int scheduleId, String sourceAirport, String destinationAirport, LocalDateTime arrivalTime,
-			LocalDateTime departureTime) {
+	public Schedule(int scheduleId, String sourceAirport, String destinationAirport, @DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")LocalDateTime arrivalTime,
+			@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")LocalDateTime departureTime) {
 		super();
 		this.scheduleId = scheduleId;
 		this.sourceAirport = sourceAirport;

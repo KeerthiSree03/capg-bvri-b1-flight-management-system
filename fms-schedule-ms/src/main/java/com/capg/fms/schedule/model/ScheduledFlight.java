@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.client.RestTemplate;
 
 @Entity
@@ -28,6 +29,7 @@ public class ScheduledFlight {
 
 	@OneToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "schedule", referencedColumnName = "scheduleId")
+	@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")
 	private Schedule schedule;
 
 	public ScheduledFlight() {
