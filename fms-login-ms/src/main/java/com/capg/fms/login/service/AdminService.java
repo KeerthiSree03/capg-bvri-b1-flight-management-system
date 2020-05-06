@@ -7,6 +7,8 @@ import org.springframework.web.client.RestTemplate;
 import com.capg.fms.login.model.Flight;
 import com.capg.fms.login.model.ScheduledFlight;
 
+import net.bytebuddy.description.ModifierReviewable.OfAbstraction;
+
 @Service
 public class AdminService implements IAdminService {
 	
@@ -39,6 +41,8 @@ public class AdminService implements IAdminService {
 
 	@Override
 	public ScheduledFlight addScheduledFlight(ScheduledFlight scheduledFlight) {
+		
+		System.err.println(scheduledFlight.getSchedule().getArrivalTime());
 		// TODO Auto-generated method stub
 		return restTemplate.postForObject("http://schedule-ms/scheduleflight/add", scheduledFlight, ScheduledFlight.class);
 	}

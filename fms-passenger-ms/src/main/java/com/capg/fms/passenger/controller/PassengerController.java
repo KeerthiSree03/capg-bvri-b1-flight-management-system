@@ -2,8 +2,6 @@
 package com.capg.fms.passenger.controller;
 
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.fms.passenger.model.Passenger;
+import com.capg.fms.passenger.model.PassengerList;
 import com.capg.fms.passenger.service.PassengerServiceImpl;
 
 @RestController
@@ -48,9 +47,9 @@ public class PassengerController {
     }
 
 	@GetMapping("/all")
-public ResponseEntity<List<Passenger>> getAllPassengers()
+public ResponseEntity<PassengerList> getAllPassengers()
 {
-	return new ResponseEntity<List<Passenger>>(passengerService.getAllPasssengers(),HttpStatus.OK);
+	return new ResponseEntity<PassengerList>(passengerService.getAllPasssengers(),HttpStatus.OK);
 }
 
 	@PutMapping("/update")
@@ -59,5 +58,10 @@ public ResponseEntity<List<Passenger>> getAllPassengers()
 		   return new ResponseEntity<Passenger>(passengerService.updatePassenger(passenger),HttpStatus.OK);
 	}
 
+	@GetMapping("/getcount")
+	public long getCountOfPassenger() {
+		
+		return passengerService.getCountOfPassenger();
+	}
 	
 }

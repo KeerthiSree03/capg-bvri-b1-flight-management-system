@@ -1,14 +1,18 @@
 package com.capg.fms.booking.service;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.capg.fms.booking.exceptions.BookingIdNotFoundException;
 import com.capg.fms.booking.exceptions.InvalidInputException;
 import com.capg.fms.booking.model.Booking;
 import com.capg.fms.booking.model.BookingList;
+import com.capg.fms.booking.model.Flight;
 import com.capg.fms.booking.model.Passenger;
+import com.capg.fms.booking.model.PassengerList;
 import com.capg.fms.booking.repository.IBookingRepo;
 
 
@@ -17,9 +21,35 @@ public class BookingServiceImpl implements IBookingService  {
 
 	@Autowired
 	IBookingRepo repo;
+	@Autowired
+	RestTemplate restTemplate;
 	
 	@Override
 	public Booking addBooking(Booking booking) {
+		
+		
+		
+	//	long flightNumber = booking.getFlightNumber();
+		
+		Passenger noOfPassengers = restTemplate.getForObject("http://passenger-ms/passenger/getcount", Passenger.class);
+		
+		PassengerList passengerList = restTemplate.getForObject("http://passenger-ms/passenger/all", PassengerList.class);
+		
+		Flight flight = restTemplate.getForObject("http:flight-ms/flights/id/"+booking.getFlightNumber(), Flight.class);
+		
+		if (noOfPassengers == null ) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		
+		if (passengerList == null) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+		}
+		
+		if (flight == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		
+		
 		return repo.save(booking);
 	}
 
