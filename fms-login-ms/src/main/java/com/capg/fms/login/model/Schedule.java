@@ -1,6 +1,6 @@
 package com.capg.fms.login.model;
 
-import java.time.LocalDateTime;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,21 +24,18 @@ public class Schedule {
 	//private Airport destinationAirport;
 	
 	private String destinationAirport;
+
+	private String arrivalTime;
 	
-	@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")
-	//@JsonFormat(pattern = "yyyy/MM/ddThh:mm:ss")
-	private LocalDateTime arrivalTime;
-	@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")
-	//@JsonFormat(pattern = "yyyy/MM/ddThh:mm:ss")
-	private LocalDateTime departureTime;
+	private String departureTime;
 
 	public Schedule() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Schedule(int scheduleId, String sourceAirport, String destinationAirport, @DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")LocalDateTime arrivalTime,
-			@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")LocalDateTime departureTime) {
+	public Schedule(int scheduleId, String sourceAirport, String destinationAirport, String arrivalTime,
+			String departureTime) {
 		super();
 		this.scheduleId = scheduleId;
 		this.sourceAirport = sourceAirport;
@@ -71,19 +68,19 @@ public class Schedule {
 		this.destinationAirport = destinationAirport;
 	}
 
-	public LocalDateTime getArrivalTime() {
+	public String getArrivalTime() {
 		return arrivalTime;
 	}
 
-	public void setArrivalTime(LocalDateTime arrivalTime) {
+	public void setArrivalTime(String arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
 
-	public LocalDateTime getDepartureTime() {
+	public String getDepartureTime() {
 		return departureTime;
 	}
 
-	public void setDepartureTime(LocalDateTime departureTime) {
+	public void setDepartureTime(String departureTime) {
 		this.departureTime = departureTime;
 	}
 
