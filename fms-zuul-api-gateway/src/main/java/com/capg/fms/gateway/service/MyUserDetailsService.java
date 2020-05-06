@@ -19,12 +19,12 @@ import com.capg.fms.gateway.model.UserInfo;
 public class MyUserDetailsService implements UserDetailsService{
 	
 	@Autowired
-	RestTemplate rt;
+	RestTemplate restTemplate;
 	
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
-		UserInfo userInfo = rt.getForObject("http://login-ms/users/user-name/"+userName, UserInfo.class);
-		String role=userInfo.getUserType().equals("ADMIN")?"ADMIN":"USER";
+		UserInfo userInfo = restTemplate.getForObject("http://login-ms/users/p/user-name/"+userName, UserInfo.class);
+		String role=(userInfo.getUserType().toUpperCase()).equals("ADMIN")?"ADMIN":"USER";
 		List<GrantedAuthority> authorities=Arrays.asList(new SimpleGrantedAuthority(role));
 		return new User(userName, userInfo.getUserPassword(), authorities);
 	}

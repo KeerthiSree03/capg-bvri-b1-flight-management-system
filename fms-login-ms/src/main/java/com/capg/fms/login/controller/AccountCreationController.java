@@ -12,13 +12,13 @@ import com.capg.fms.login.model.User;
 import com.capg.fms.login.service.IUserAccountCreationService;
 
 @RestController
-@RequestMapping("/account")
+@RequestMapping("/users")
 public class AccountCreationController {
 	
 	@Autowired
 	IUserAccountCreationService service;
 	
-	@PostMapping("/add")
+	@PostMapping("/p/add")
 	public ResponseEntity<User> addUser(@RequestBody User user) {
 		if(service.validateUserPhoneNo(user.getUserPhone()) && service.validateUserEmail(user.getUserEmail()) && service.validateUserId(user.getUserId()) && service.validateUserPassword(user.getUserPassword()) && service.validateUserType(user.getUserType()) && service.validateUserName(user.getUserName())) {
 			return new ResponseEntity<User>(service.addUser(user),HttpStatus.CREATED);
