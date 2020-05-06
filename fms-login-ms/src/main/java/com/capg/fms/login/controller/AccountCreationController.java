@@ -12,7 +12,7 @@ import com.capg.fms.login.model.User;
 import com.capg.fms.login.service.IUserAccountCreationService;
 
 @RestController
-@RequestMapping("/account")
+@RequestMapping("/public/account")
 public class AccountCreationController {
 	
 	@Autowired

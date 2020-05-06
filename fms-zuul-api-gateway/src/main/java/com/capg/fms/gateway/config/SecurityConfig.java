@@ -1,10 +1,13 @@
 package com.capg.fms.gateway.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.capg.fms.gateway.service.MyUserDetailsService;
 
@@ -12,8 +15,6 @@ import com.capg.fms.gateway.service.MyUserDetailsService;
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private MyUserDetailsService userDetailsService;
-
-
 
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 			 auth.userDetailsService(userDetailsService);
@@ -24,14 +25,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 			.antMatchers("/admin/**")
 			.hasRole("ADMIN")
-			.antMatchers("/secure/**")
-			.hasAnyRole("ADMIN","USER")
+			.antMatchers("/user/**")
+			.hasRole("USER")
 			.antMatchers("/public/**")
-			
 			.permitAll()
 			.and()
 			.formLogin();
 	}
 	
-
+	@Bean
+	public PasswordEncoder getPasswordEncoder() {
+		return NoOpPasswordEncoder.getInstance();
+	}
 }

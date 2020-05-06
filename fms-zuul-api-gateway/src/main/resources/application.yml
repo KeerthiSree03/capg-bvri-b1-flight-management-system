@@ -5,9 +5,7 @@ server:
   port: 8321
 zuul:
   routes:
-    login-ms:
-      path: /users/**
-      service-id: login-ms
+    
     booking-ms:
       path: /booking/**
       service-id: booking-ms 
@@ -22,7 +20,23 @@ zuul:
       service-id: airport-ms 
     passenger-ms:
       path: /passenger/**
-      service-id: passenger-ms
+      service-id: passenger-
+      
+    login-ms-admin:
+      path: /admin/**
+      service-id: login-ms
+      strip-prefix: false
+    login-ms-users:
+      path: /user/**
+      service-id: login-ms
+      #strip-prefix: false
+    login-ms-public:
+      path: /public/**
+      service-id: login-ms
+      #strip-prefix: false
+      
+      
+      
       
       
       

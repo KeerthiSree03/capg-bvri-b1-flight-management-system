@@ -35,6 +35,11 @@ public class LoginController {
 		return service.getUser(userName);
 	}
 	
+	@GetMapping("/message")
+	public String gtMessage() {
+		return "Hello All";
+	}
+	
 
 	
 }

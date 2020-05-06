@@ -15,7 +15,7 @@ import com.capg.fms.login.model.FlightList;
 import com.capg.fms.login.service.ICustomerService;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/user")
 public class CustomerController {
 	
 	@Autowired
