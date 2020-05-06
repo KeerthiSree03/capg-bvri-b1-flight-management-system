@@ -30,12 +30,12 @@ public class LoginController {
 		return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 	}
 	
-	@GetMapping("/user-name/{userName}")
+	@GetMapping("/p/user-name/{userName}")
 	public User getUserByUserName(@PathVariable String userName) {
 		return service.getUser(userName);
 	}
 	
-	@GetMapping("/message")
+	@GetMapping("/p/message")
 	public String gtMessage() {
 		return "Hello All";
 	}

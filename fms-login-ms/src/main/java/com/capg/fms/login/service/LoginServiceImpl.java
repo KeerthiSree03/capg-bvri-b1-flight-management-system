@@ -29,6 +29,9 @@ public class LoginServiceImpl implements ILoginService {
 
 	@Override
 	public User getUser(String userName) {
+		if(!repo.existsByUserName(userName))  {
+			throw new InvalidUserNameAndPasswordException("user with userName ["+userName+"] NOT Found");
+		}
 		return repo.getUserByUserName(userName);
 	}
 

@@ -21,17 +21,16 @@ zuul:
     passenger-ms:
       path: /passenger/**
       service-id: passenger-
-      
     login-ms-admin:
-      path: /admin/**
+      path: /admin/users/**
       service-id: login-ms
       strip-prefix: false
     login-ms-users:
-      path: /user/**
+      path: /user/users/**
       service-id: login-ms
       #strip-prefix: false
     login-ms-public:
-      path: /public/**
+      path: /public/users/**
       service-id: login-ms
       #strip-prefix: false
       

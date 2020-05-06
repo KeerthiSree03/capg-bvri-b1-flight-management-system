@@ -14,50 +14,50 @@ import com.capg.fms.login.model.ScheduledFlight;
 import com.capg.fms.login.service.AdminService;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/users")
 public class AdminController {
 
 	@Autowired
 	AdminService service;
 	
-	@PostMapping("/flights/add")
+	@PostMapping("/a/flights/add")
 	public Flight addFlight(@RequestBody Flight flight) {
 		
 		return service.addFlight(flight);
 	}
-	@GetMapping("/flights/id/{flightNumber}")
+	@GetMapping("/a/flights/id/{flightNumber}")
 	public Flight viewFlight(@PathVariable long flightNumber) {
 		
 		return service.viewFlight(flightNumber);
 	}
-	@DeleteMapping("/flights/deleteById/{flightNumber}")
+	@DeleteMapping("/a/flights/deleteById/{flightNumber}")
 	public void cancelFlight(@PathVariable long flightNumber) {
 		
 		service.cancelFlight(flightNumber);
 	}
-	@PostMapping("/flights/modify")
+	@PostMapping("/a/flights/modify")
 	public Flight modifyFlight(@RequestBody Flight flight) {
 		
 		return service.modifyFlight(flight);
 	}
-	@PostMapping("scheduleflight/add")
+	@PostMapping("/a/scheduleflight/add")
 	public ScheduledFlight addScheduledFlight(@RequestBody ScheduledFlight scheduledFlight) {
 		
 		
 		
 		return service.addScheduledFlight(scheduledFlight);
 	}
-	@GetMapping("scheduleflight/id/{scheduledFlightId}")
+	@GetMapping("/a/scheduleflight/id/{scheduledFlightId}")
 	public ScheduledFlight viewScheduledFlight(@PathVariable long scheduledFlightId) {
 		
 		return service.viewScheduledFlight(scheduledFlightId);
 	}
-	@DeleteMapping("scheduleflight/delete/{scheduledFlightId}")
+	@DeleteMapping("/a/scheduleflight/delete/{scheduledFlightId}")
 	public void cancelScheduledFlight(@PathVariable long scheduledFlightId) {
 		service.cancelScheduledFlight(scheduledFlightId);
 		
 	}
-	@PostMapping("scheduleflight/modify")
+	@PostMapping("/a/scheduleflight/modify")
 	public ScheduledFlight modifyScheduledFlight(@RequestBody ScheduledFlight scheduledFlight) {
 		
 		return service.modifyScheduledFlight(scheduledFlight);

@@ -15,36 +15,36 @@ import com.capg.fms.login.model.FlightList;
 import com.capg.fms.login.service.ICustomerService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class CustomerController {
 	
 	@Autowired
 	ICustomerService service;
 	
-	@GetMapping("/flights/all")
+	@GetMapping("/u/flights/all")
 	public FlightList checkAvailableFlights() {
 		
 		return service.checkAvailableFlights();
 	}
 	
-	@PostMapping("/booking/add")
+	@PostMapping("/u/booking/add")
 	public Booking makeBooking(@RequestBody Booking booking) {
 		
 		return service.makeBooking(booking);
 		
 	}
 
-	@GetMapping("/booking/all")
+	@GetMapping("/u/booking/all")
 	public BookingList viewBookingList() {
 	
 		return service.viewBookingList();
 	}
-	@DeleteMapping("/delete/{bookingId}")
+	@DeleteMapping("/u/delete/{bookingId}")
 	public void cancelBooking(@PathVariable long bookingId) {
 		
 		service.cancelBooking(bookingId);
 	}
-	@PostMapping("/modify")
+	@PostMapping("/u/modify")
 	public Booking modifyBooking(@RequestBody Booking booking) {
 		
 		return service.modifyBooking(booking);
