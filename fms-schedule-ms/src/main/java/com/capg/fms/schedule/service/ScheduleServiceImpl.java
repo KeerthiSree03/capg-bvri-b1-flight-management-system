@@ -34,12 +34,15 @@ public class ScheduleServiceImpl implements IScheduleService {
 	@Override
 	public ScheduledFlight addScheduleFlight(ScheduledFlight scheduledFlight) {
 		
+		System.err.println("Service of schedule-ms"+scheduledFlight);
+		
 		
 		  String sourceAirportName = scheduledFlight.getSchedule().getSourceAirport();
 		  String destinationAirportName =
 		  scheduledFlight.getSchedule().getDestinationAirport(); long flightNumber =
 		  scheduledFlight.getFlightNumber();
 		  
+		 
 		  System.err.println(sourceAirportName);
 		  System.err.println(destinationAirportName);
 		  System.err.println(scheduledFlight.getSchedule().getArrivalTime());
@@ -59,7 +62,7 @@ public class ScheduleServiceImpl implements IScheduleService {
 		  
 		  if (flightNumberFromFlight == null) { throw new
 		  ResponseStatusException(HttpStatus.NOT_FOUND); }
-		 
+		  
 		  System.err.println(scheduledFlight.getSchedule().getSourceAirport());
 		 
 		

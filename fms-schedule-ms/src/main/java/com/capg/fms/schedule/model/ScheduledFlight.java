@@ -29,7 +29,7 @@ public class ScheduledFlight {
 
 	@OneToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "schedule", referencedColumnName = "scheduleId")
-	@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")
+	//@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")
 	private Schedule schedule;
 
 	public ScheduledFlight() {

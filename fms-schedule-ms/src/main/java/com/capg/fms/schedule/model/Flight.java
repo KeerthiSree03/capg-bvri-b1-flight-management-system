@@ -7,11 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
+//@Entity
 public class Flight {
     
-	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	//@Id
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	public long flightNumber;
 	public String flightModel;
 	public String carrierName;

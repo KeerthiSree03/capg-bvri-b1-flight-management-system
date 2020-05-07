@@ -52,9 +52,9 @@ public class ScheduleController {
 		return new ResponseEntity<List<ScheduledFlight>>(scheduledFlight, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/delete/{scheduleId}")
-	public ResponseEntity<ScheduledFlight> deleteScheduledFlight(@PathVariable int scheduleId) {
-		service.deleteScheduledFlight(scheduleId);
+	@DeleteMapping("/delete/{scheduledFlightId}")
+	public ResponseEntity<ScheduledFlight> deleteScheduledFlight(@PathVariable int scheduledFlightId) {
+		service.deleteScheduledFlight(scheduledFlightId);
 		return new ResponseEntity<ScheduledFlight>(HttpStatus.OK);
 	}
 
