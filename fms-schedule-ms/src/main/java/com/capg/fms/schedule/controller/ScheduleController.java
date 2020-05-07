@@ -26,6 +26,8 @@ public class ScheduleController {
 
 	@PostMapping("/add")
 	public ScheduledFlight addScheduledFlight(@RequestBody ScheduledFlight scheduledFlight) {
+		
+		System.err.println("Controller of Schedul-ms"+scheduledFlight);
 
 		ScheduledFlight scheduledFlight1 = service.addScheduleFlight(scheduledFlight);
 

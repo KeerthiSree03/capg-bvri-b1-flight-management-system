@@ -1,4 +1,4 @@
-package com.capg.fms.schedule.model;
+package com.capg.fms.user.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -7,29 +7,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.client.RestTemplate;
 
-@Entity
 public class ScheduledFlight {
-
 	
-	
-	
-	@Id
-	@Column(name = "scheduledFlightId")
 	private int scheduledFlightId;
 
-	@Column(name = "availableSeats")
+	
 	private int availableSeats;
 
-	@Column(name = "flightNumber")
+	
 	private long flightNumber;
 
-	@OneToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(name = "schedule", referencedColumnName = "scheduleId")
-	@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")
+
 	private Schedule schedule;
 
 	public ScheduledFlight() {

@@ -1,54 +1,41 @@
-package com.capg.fms.schedule.model;
+package com.capg.fms.user.model;
 
-import java.time.LocalDateTime;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-@Entity
-public class Schedule {
-	
-	
-	
-	
 
-	@Id
-	@Column(name = "scheduleId")
+public class Schedule {
+
+	
 	private int scheduleId;// not mentioned in case study .......
 	
 	//private Airport sourceAirport;
 
-	@Column(name = "sourceAirport")
+
 	private String sourceAirport;
 	
 	
 	//private Airport destinationAirport;
-	@Column(name = "destinationAirport")
+	
 	private String destinationAirport;
+
+	private String arrivalTime;
 	
-	@Column(name = "arrivalTime")
-	@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")
-	//@JsonFormat(pattern = "yyyy/MM/ddThh:mm:ss")
-	private LocalDateTime arrivalTime;
-	@Column(name = "departureTime")
-	@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")
-	//@JsonFormat(pattern = "yyyy/MM/ddThh:mm:ss")
-	
-	private LocalDateTime departureTime;
+	private String departureTime;
 
 	public Schedule() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Schedule(int scheduleId, String sourceAirport, String destinationAirport, LocalDateTime arrivalTime,
-			LocalDateTime departureTime) {
+	public Schedule(int scheduleId, String sourceAirport, String destinationAirport, String arrivalTime,
+			String departureTime) {
 		super();
 		this.scheduleId = scheduleId;
 		this.sourceAirport = sourceAirport;
@@ -81,19 +68,19 @@ public class Schedule {
 		this.destinationAirport = destinationAirport;
 	}
 
-	public LocalDateTime getArrivalTime() {
+	public String getArrivalTime() {
 		return arrivalTime;
 	}
 
-	public void setArrivalTime(@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")LocalDateTime arrivalTime) {
+	public void setArrivalTime(String arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
 
-	public LocalDateTime getDepartureTime() {
+	public String getDepartureTime() {
 		return departureTime;
 	}
 
-	public void setDepartureTime(@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")LocalDateTime departureTime) {
+	public void setDepartureTime(String departureTime) {
 		this.departureTime = departureTime;
 	}
 
