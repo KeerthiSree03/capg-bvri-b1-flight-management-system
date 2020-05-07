@@ -1,5 +1,9 @@
 package com.capg.fms.login.service;
 
+import java.util.Arrays;
+
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +16,23 @@ public class UserAccountCreationServiceImpl implements IUserAccountCreationServi
 	
 	@Autowired
 	IUserJpaRepo repo;
+	
+	
+	@PostConstruct
+	public void addSomeUsers() {
+		User user1=new User("admin",125364125321L,"Keerthi23","keerthi@Capg23",9854235621L,"keerthi@gmail.com");
+		User user2=new User("user",125364125325L,"Ramanuj88","ramanuj@Capg88",9854235625L,"ramanuj@gmail.com");
+		repo.saveAll(Arrays.asList(user1,user2));
+	}
 
 	@Override
 	public User addUser(User user) {
 		return repo.save(user);
+	}
+	@Override
+	public User getUserByUserName(String userName) {
+		// TODO Auto-generated method stub
+		return repo.getUserByUserName(userName);
 	}
 	
 	public boolean validateUserPhoneNo(long phoneNo) {
@@ -48,9 +65,9 @@ public class UserAccountCreationServiceImpl implements IUserAccountCreationServi
 		if(count!=12)
 			throw new InvalidInputException("ID should be of 12 digits");	
 			
-		else if(repo.existsByUserId(p)==true) {
-			 throw new InvalidInputException("User with userId ["+p+"] already exists");
-		}
+//		else if(repo.existsByUserId(p)==true) {
+//			 throw new InvalidInputException("User with userId ["+p+"] already exists");
+//		}
 		return true;
 			
 	}
@@ -71,9 +88,9 @@ public class UserAccountCreationServiceImpl implements IUserAccountCreationServi
 			throw new InvalidInputException("Username should contain atleast 8 alphanumeric characters");
 			
 		}
-		else if(repo.existsByUserName(userName))
-			throw new InvalidInputException("Username ["+userName+"] already exists");
-		else
+//		else if(repo.existsByUserName(userName))
+//			throw new InvalidInputException("Username ["+userName+"] already exists");
+//		else
 			return true;
 	}
 	

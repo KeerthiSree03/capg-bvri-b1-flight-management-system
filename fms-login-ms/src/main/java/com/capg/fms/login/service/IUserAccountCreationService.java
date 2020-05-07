@@ -11,5 +11,6 @@ public interface IUserAccountCreationService {
 	public boolean validateUserPassword(String password);
 	public boolean validateUserType(String userType) ;
 	public boolean validateUserName(String userName);
+	public User getUserByUserName(String userName);
 
 }
