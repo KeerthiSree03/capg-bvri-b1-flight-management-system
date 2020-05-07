@@ -8,8 +8,8 @@
 		<version>2.2.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.capg.fma</groupId>
-	<artifactId>fms-login-ms</artifactId>
+	<groupId>com.capg.fms</groupId>
+	<artifactId>fms-user-ms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>fms-login-ms</name>
 	<description>Demo project for Spring Boot</description>
