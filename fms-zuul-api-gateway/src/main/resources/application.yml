@@ -25,7 +25,7 @@ zuul:
     login-ms-admin:
       path: /admin/**
       service-id: login-ms
-      strip-prefix: false
+      #strip-prefix: false
     login-ms-users:
       path: /user/**
       service-id: login-ms
