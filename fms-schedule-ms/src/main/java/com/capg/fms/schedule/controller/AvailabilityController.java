@@ -17,7 +17,7 @@ import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
 import com.capg.fms.schedule.service.IAvailabilityService;
 
 @RestController
-@RequestMapping("/flights")
+@RequestMapping("/availabilityflight")
 public class AvailabilityController {
 
 	@Autowired

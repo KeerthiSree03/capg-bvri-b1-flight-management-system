@@ -50,7 +50,7 @@ public class PassengerController {
 public ResponseEntity<PassengerList> getAllPassengers()
 {
 	return new ResponseEntity<PassengerList>(passengerService.getAllPasssengers(),HttpStatus.OK);
-}
+} 
 
 	@PutMapping("/update")
 	public ResponseEntity<Passenger> updatePassenger(@RequestBody Passenger passenger)

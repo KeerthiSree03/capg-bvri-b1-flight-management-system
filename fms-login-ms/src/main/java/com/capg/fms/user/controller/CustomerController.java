@@ -22,9 +22,33 @@ public class CustomerController {
 	ICustomerService service;
 	
 	@GetMapping("/u/flights/all")
-	public FlightList checkAvailableFlights() {
+	public FlightList viewAllFlights() {
 		
-		return service.checkAvailableFlights();
+		return service.viewAllFlights();
+	}
+	
+	@GetMapping("/u/availability/{flightNumber}")
+	public String checkScheduledFlightById(@PathVariable long flightNumber) {
+		return service.checkScheduledFlightById(flightNumber);
+	}
+	
+	@GetMapping("/u/availability/{flightNumber}/{availableSeats}")
+	public boolean checkSeatAvailability(@PathVariable long flightNumber,@PathVariable int availableSeats) {
+		return service.checkSeatAvailability(flightNumber, availableSeats);
+	}
+	
+	@GetMapping("/u/availability/{flightNumber}/source/{availableSeats}")
+	public String checkSource(@PathVariable long flightNumber,@PathVariable String sourceAirport) {
+		return service.checkDestination(flightNumber, sourceAirport);
+	}
+	@GetMapping("/u/availability/{flightNumber}/destination/{availableSeats}")
+	public String checkDestination(@PathVariable long flightNumber,@PathVariable String destinationAirport) {
+		return service.checkDestination(flightNumber, destinationAirport);
+	}
+	@GetMapping("/{flightNumber}/source/{sourceAirport}/destination/{destinationAirport}")
+	public String checkSourceAndDestination(@PathVariable long flightNumber,@PathVariable String sourceAirport,@PathVariable String destinationAirport) {
+		
+		return service.checkSourceAndDestination(flightNumber, sourceAirport, destinationAirport);
 	}
 	
 	@PostMapping("/u/booking/add")
