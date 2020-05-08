@@ -16,6 +16,7 @@ import com.capg.fms.schedule.model.Airport;
 import com.capg.fms.schedule.model.Flight;
 import com.capg.fms.schedule.model.Schedule;
 import com.capg.fms.schedule.model.ScheduledFlight;
+import com.capg.fms.schedule.model.ScheduledFlightList;
 import com.capg.fms.schedule.repository.IScheduleRepo;
 
 
@@ -79,9 +80,9 @@ public class ScheduleServiceImpl implements IScheduleService {
 	}
 
 	@Override
-	public List<ScheduledFlight> viewScheduledFlight() {
+	public ScheduledFlightList viewScheduledFlight() {
 		// TODO Auto-generated method stub
-		return repo.findAll();
+		return new ScheduledFlightList(repo.findAll());
 	}
 
 	@Override

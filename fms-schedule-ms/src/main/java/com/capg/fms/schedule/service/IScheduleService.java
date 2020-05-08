@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.capg.fms.schedule.model.Schedule;
 import com.capg.fms.schedule.model.ScheduledFlight;
+import com.capg.fms.schedule.model.ScheduledFlightList;
 
 public interface IScheduleService {
 	
@@ -11,7 +12,7 @@ public interface IScheduleService {
 
 	public ScheduledFlight viewScheduledFlight(int scheduleId);
 	
-	public List<ScheduledFlight> viewScheduledFlight();
+	public ScheduledFlightList viewScheduledFlight();
 
 	public ScheduledFlight modifyScheduledFlight( int scheduledFlightId,int availableSeats, long flightNumber, Schedule schedule);
 	

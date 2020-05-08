@@ -2,6 +2,7 @@ package com.capg.fms.login.service;
 
 import com.capg.fms.login.model.Flight;
 import com.capg.fms.login.model.ScheduledFlight;
+import com.capg.fms.login.model.ScheduledFlightList;
 
 public interface IAdminService {
 	
@@ -14,5 +15,6 @@ public interface IAdminService {
 	ScheduledFlight  viewScheduledFlight (long scheduledFlightId);
 	void cancelScheduledFlight (long scheduledFlightId);
 	ScheduledFlight modifyScheduledFlight(ScheduledFlight  flight);
+	public ScheduledFlightList viewAllScheduledFlight();
 
 }

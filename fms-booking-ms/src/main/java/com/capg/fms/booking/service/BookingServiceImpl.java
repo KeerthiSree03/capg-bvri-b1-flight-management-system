@@ -31,23 +31,28 @@ public class BookingServiceImpl implements IBookingService  {
 		
 	//	long flightNumber = booking.getFlightNumber();
 		
-		Passenger noOfPassengers = restTemplate.getForObject("http://passenger-ms/passenger/getcount", Passenger.class);
 		
-		PassengerList passengerList = restTemplate.getForObject("http://passenger-ms/passenger/all", PassengerList.class);
-		
-		Flight flight = restTemplate.getForObject("http:flight-ms/flights/id/"+booking.getFlightNumber(), Flight.class);
-		
-		if (noOfPassengers == null ) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
-		
-		if (passengerList == null) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-		}
-		
-		if (flight == null) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
+		  Passenger noOfPassengers =
+		  restTemplate.getForObject("http://passenger-ms/passenger/getcount",
+		  Passenger.class);
+		  
+		  PassengerList passengerList =
+		  restTemplate.getForObject("http://passenger-ms/passenger/all",
+		  PassengerList.class);
+		  
+		  Flight flight =
+		  restTemplate.getForObject("http:flight-ms/flights/id/"+booking.
+		  getFlightNumber(), Flight.class);
+		  
+		  if (noOfPassengers == null ) { throw new
+		  ResponseStatusException(HttpStatus.NOT_FOUND); }
+		  
+		  if (passengerList == null) { throw new
+		  ResponseStatusException(HttpStatus.BAD_REQUEST); }
+		  
+		  if (flight == null) { throw new
+		  ResponseStatusException(HttpStatus.NOT_FOUND); }
+		 
 		
 		
 		return repo.save(booking);

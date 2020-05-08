@@ -1,4 +1,4 @@
-package com.capg.fms.schedule.controller;
+ package com.capg.fms.schedule.controller;
 
 import java.util.List;
 
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.fms.schedule.model.ScheduledFlight;
+import com.capg.fms.schedule.model.ScheduledFlightList;
 import com.capg.fms.schedule.service.ScheduleServiceImpl;
 
 @RestController
@@ -45,11 +46,11 @@ public class ScheduleController {
 	}
 
 	@GetMapping("/viewall")
-	public ResponseEntity<List<ScheduledFlight>> viewScheduledFlight() {
+	public ResponseEntity<ScheduledFlightList> viewScheduledFlight() {
 
-		List<ScheduledFlight> scheduledFlight = service.viewScheduledFlight();
+		ScheduledFlightList scheduledFlight = service.viewScheduledFlight();
 
-		return new ResponseEntity<List<ScheduledFlight>>(scheduledFlight, HttpStatus.OK);
+		return new ResponseEntity<ScheduledFlightList>(scheduledFlight, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/delete/{scheduledFlightId}")

@@ -6,8 +6,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.capg.fms.login.model.Flight;
 import com.capg.fms.login.model.ScheduledFlight;
-
-import net.bytebuddy.description.ModifierReviewable.OfAbstraction;
+import com.capg.fms.login.model.ScheduledFlightList;
 
 @Service
 public class AdminService implements IAdminService {
@@ -63,6 +62,10 @@ public class AdminService implements IAdminService {
 	public ScheduledFlight modifyScheduledFlight(ScheduledFlight scheduledFlight) {
 		// TODO Auto-generated method stub
 		return restTemplate.postForObject("http://schedule-ms/scheduleflight/modify", scheduledFlight , ScheduledFlight.class);
+	}
+	public ScheduledFlightList viewAllScheduledFlight() {
+		
+		return restTemplate.getForObject("http://schedule-ms/scheduleflight/viewall", ScheduledFlightList.class);
 	}
 
 }

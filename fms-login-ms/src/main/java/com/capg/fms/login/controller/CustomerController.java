@@ -42,6 +42,7 @@ public class CustomerController {
 	@DeleteMapping("/u/delete/{bookingId}")
 	public void cancelBooking(@PathVariable long bookingId) {
 		
+		
 		service.cancelBooking(bookingId);
 	}
 	@PostMapping("/u/modify")
