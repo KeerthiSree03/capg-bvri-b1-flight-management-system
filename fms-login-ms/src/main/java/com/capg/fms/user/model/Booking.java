@@ -16,20 +16,20 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Booking {
     
 	
-	private long bookingId;
-    private long userId;                  //private User userId;
+	private String  bookingId;
+    private String userId;                  //private User userId;
     //@JsonFormat(pattern="yyyy-MM-dd")
 	private String bookingDate;
 	//@ElementCollection
-	private List<Long> passengerList;     //private List<Passenger> passengerList;
-	private double ticketCost;
-	private long flightNumber;            //private Flight flight;
-	private int noOfPassengers;
+	private List<String> passengerList;     //private List<Passenger> passengerList;
+	private String  ticketCost;
+	private String flightNumber;            //private Flight flight;
+	private String noOfPassengers;
 
 	public Booking() {	}
 	
-	public Booking(long bookingId, long userId, String bookingDate, List<Long> passengerList, double ticketCost,
-			long flightNumber, int noOfPassengers) {
+	public Booking(String bookingId, String userId, String bookingDate, List<String> passengerList, String ticketCost,
+			String flightNumber, String noOfPassengers) {
 		super();
 		this.bookingId = bookingId;
 		this.userId = userId;
@@ -40,19 +40,19 @@ public class Booking {
 		this.noOfPassengers = noOfPassengers;
 	}
 
-	public long getBookingId() {
+	public String getBookingId() {
 		return bookingId;
 	}
 
-	public void setBookingId(long bookingId) {
+	public void setBookingId(String bookingId) {
 		this.bookingId = bookingId;
 	}
 
-    public long getUserId() {
+    public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
@@ -64,37 +64,37 @@ public class Booking {
 		this.bookingDate = bookingDate;
 	}
 
-	public List<Long> getPassengerList() {
+	public List<String> getPassengerList() {
 		return passengerList;
 	}
 	
-	public void setPassengerList(List<Long> passengerList) {
+	public void setPassengerList(List<String> passengerList) {
 		this.passengerList = passengerList;
 	}
 	
-	public double getTicketCost() {
+	public String getTicketCost() {
 		return ticketCost;
 	}
 
 
-	public void setTicketCost(double ticketCost) {
+	public void setTicketCost(String ticketCost) {
 		this.ticketCost = ticketCost;
 	}
 
 	
-	public long getFlightNumber() {
+	public String getFlightNumber() {
 		return flightNumber;
 	}
 
-	public void setFlightNumber(long flightNumber) {
+	public void setFlightNumber(String flightNumber) {
 		this.flightNumber = flightNumber;
 	}
 
-	public int getNoOfPassengers() {
+	public String getNoOfPassengers() {
 		return noOfPassengers;
 	}
 
-	public void setNoOfPassengers(int noOfPassengers) {
+	public void setNoOfPassengers(String noOfPassengers) {
 		this.noOfPassengers = noOfPassengers;
 	}
 

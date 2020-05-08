@@ -32,23 +32,29 @@ public class BookingServiceImpl implements IBookingService  {
 	//	long flightNumber = booking.getFlightNumber();
 		
 		
-		  Passenger noOfPassengers =
+		
+		  Object noOfPassengers =
 		  restTemplate.getForObject("http://passenger-ms/passenger/getcount",
-		  Passenger.class);
-		  
+		  Object.class);
+		 
+		
 		  PassengerList passengerList =
 		  restTemplate.getForObject("http://passenger-ms/passenger/all",
 		  PassengerList.class);
+		 
 		  
 		  Flight flight =
-		  restTemplate.getForObject("http:flight-ms/flights/id/"+booking.
+		  restTemplate.getForObject("http://flight-ms/flights/id/"+booking.
 		  getFlightNumber(), Flight.class);
 		  
-		  if (noOfPassengers == null ) { throw new
+		
+		 if (noOfPassengers == null ) { throw new
 		  ResponseStatusException(HttpStatus.NOT_FOUND); }
-		  
+		 
+		
 		  if (passengerList == null) { throw new
 		  ResponseStatusException(HttpStatus.BAD_REQUEST); }
+		 
 		  
 		  if (flight == null) { throw new
 		  ResponseStatusException(HttpStatus.NOT_FOUND); }
