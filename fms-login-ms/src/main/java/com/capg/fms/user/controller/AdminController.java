@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.fms.user.model.Flight;
 import com.capg.fms.user.model.ScheduledFlight;
+import com.capg.fms.user.model.ScheduledFlightList;
 import com.capg.fms.user.service.AdminService;
 
 @RestController
@@ -40,19 +41,19 @@ public class AdminController {
 		
 		return service.modifyFlight(flight);
 	}
-	@PostMapping("/scheduleflight/add")
+	@PostMapping("/a/scheduleflight/add")
 	public ScheduledFlight addScheduledFlight(@RequestBody ScheduledFlight scheduledFlight) {
 		
 		
 		
 		return service.addScheduledFlight(scheduledFlight);
 	}
-	@GetMapping("/scheduleflight/id/{scheduledFlightId}")
+	@GetMapping("/a/scheduleflight/id/{scheduledFlightId}")
 	public ScheduledFlight viewScheduledFlight(@PathVariable long scheduledFlightId) {
 		
 		return service.viewScheduledFlight(scheduledFlightId);
 	}
-	@DeleteMapping("/scheduleflight/delete/{scheduledFlightId}")
+	@DeleteMapping("/a/scheduleflight/delete/{scheduledFlightId}")
 	public void cancelScheduledFlight(@PathVariable long scheduledFlightId) {
 		service.cancelScheduledFlight(scheduledFlightId);
 		
@@ -63,6 +64,10 @@ public class AdminController {
 		
 		return service.modifyScheduledFlight(scheduledFlight);
 	}
-	
+	@GetMapping("/a/scheduleflight/viewall")
+	public ScheduledFlightList viewAllScheduledFlight() {
+		
+		return service.viewAllScheduledFlight();
+	}
 	
 }

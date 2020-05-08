@@ -19,7 +19,7 @@ public class Booking {
 	private long bookingId;
     private long userId;                  //private User userId;
     //@JsonFormat(pattern="yyyy-MM-dd")
-	private LocalDate bookingDate;
+	private String bookingDate;
 	//@ElementCollection
 	private List<Long> passengerList;     //private List<Passenger> passengerList;
 	private double ticketCost;
@@ -28,7 +28,7 @@ public class Booking {
 
 	public Booking() {	}
 	
-	public Booking(long bookingId, long userId, LocalDate bookingDate, List<Long> passengerList, double ticketCost,
+	public Booking(long bookingId, long userId, String bookingDate, List<Long> passengerList, double ticketCost,
 			long flightNumber, int noOfPassengers) {
 		super();
 		this.bookingId = bookingId;
@@ -56,11 +56,11 @@ public class Booking {
 		this.userId = userId;
 	}
 
-	public LocalDate getBookingDate() {
+	public String getBookingDate() {
 		return bookingDate;
 	}
 
-	public void setBookingDate(LocalDate bookingDate) {
+	public void setBookingDate(String bookingDate) {
 		this.bookingDate = bookingDate;
 	}
 
