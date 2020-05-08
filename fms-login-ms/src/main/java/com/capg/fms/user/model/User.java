@@ -1,16 +1,18 @@
-package com.capg.fms.login.model;
+package com.capg.fms.user.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user_details")
+@Table(name = "user_data")
 public class User {
 	
 	private String userType;
 	@Id
 	private long userId;
+	@Column(unique = true)
 	private String userName;
 	private String userPassword; 
 	private long userPhone;

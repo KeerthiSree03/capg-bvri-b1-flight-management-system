@@ -1,4 +1,4 @@
-package com.capg.fms.login.model;
+package com.capg.fms.user.model;
 
 import java.util.List;
 

@@ -5,34 +5,46 @@ server:
   port: 8321
 zuul:
   routes:
+   user-ms-admin:
+      path: /users/a/**
+      service-id: user-ms
+     
+   user-ms-user:
+      path: /users/u/**
+      service-id: user-ms
+      
+   user-ms-public:
+      path: /users/p/**
+      service-id: user-ms     
+  
     
-    booking-ms:
-      path: /booking/**
-      service-id: booking-ms 
-    flight-ms:
-      path: /flight/**
-      service-id: flight-ms
-    schedule-ms:
-      path: /schedule/**
-      service-id: schedule-ms 
-    airport-ms:
-      path: /airport/**
-      service-id: airport-ms 
-    passenger-ms:
-      path: /passenger/**
-      service-id: passenger-
-    login-ms-admin:
-      path: /admin/users/**
-      service-id: login-ms
-      strip-prefix: false
-    login-ms-users:
-      path: /user/users/**
-      service-id: login-ms
-      #strip-prefix: false
-    login-ms-public:
-      path: /public/users/**
-      service-id: login-ms
-      #strip-prefix: false
+#    booking-ms:
+#      path: /booking/**
+#      service-id: booking-ms 
+#    flight-ms:
+#      path: /flight/**
+#      service-id: flight-ms
+#    schedule-ms:
+#      path: /schedule/**
+#      service-id: schedule-ms 
+#    airport-ms:
+#      path: /airport/**
+#      service-id: airport-ms 
+#    passenger-ms:
+#      path: /passenger/**
+#      service-id: passenger-ms
+#    login-ms-admin:
+#      path: /admin/users/**
+#      service-id: login-ms
+#      strip-prefix: false
+#    login-ms-users:
+#      path: /user/users/**
+#      service-id: login-ms
+#      #strip-prefix: false
+#    login-ms-public:
+#      path: /public/users/**
+#      service-id: login-ms
+#      #strip-prefix: false
       
       
       

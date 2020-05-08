@@ -1,12 +1,12 @@
-package com.capg.fms.login.service;
+package com.capg.fms.user.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.capg.fms.login.model.Booking;
-import com.capg.fms.login.model.BookingList;
-import com.capg.fms.login.model.FlightList;
+import com.capg.fms.user.model.Booking;
+import com.capg.fms.user.model.BookingList;
+import com.capg.fms.user.model.FlightList;
 
 @Service
 public class CustomerService implements ICustomerService {

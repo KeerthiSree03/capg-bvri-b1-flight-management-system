@@ -1,4 +1,4 @@
-package com.capg.fms.login;
+package com.capg.fms.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,10 +9,10 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient 
-public class FmsLoginMsApplication {
+public class FmsUserMsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FmsLoginMsApplication.class, args);
+		SpringApplication.run(FmsUserMsApplication.class, args);
 	}
 	
 	@Bean

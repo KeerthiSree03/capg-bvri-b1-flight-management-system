@@ -39,6 +39,7 @@ public class Schedule {
 	@Column(name = "departureTime")
 	@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")
 	//@JsonFormat(pattern = "yyyy/MM/ddThh:mm:ss")
+	
 	private LocalDateTime departureTime;
 
 	public Schedule() {
@@ -84,7 +85,7 @@ public class Schedule {
 		return arrivalTime;
 	}
 
-	public void setArrivalTime(LocalDateTime arrivalTime) {
+	public void setArrivalTime(@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")LocalDateTime arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
 
@@ -92,7 +93,7 @@ public class Schedule {
 		return departureTime;
 	}
 
-	public void setDepartureTime(LocalDateTime departureTime) {
+	public void setDepartureTime(@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")LocalDateTime departureTime) {
 		this.departureTime = departureTime;
 	}
 

@@ -1,6 +1,6 @@
-package com.capg.fms.login.service;
+package com.capg.fms.user.service;
 
-import com.capg.fms.login.model.User;
+import com.capg.fms.user.model.User;
 
 public interface ILoginService {
 	

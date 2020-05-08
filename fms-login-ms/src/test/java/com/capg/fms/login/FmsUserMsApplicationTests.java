@@ -12,15 +12,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.capg.fms.login.exceptions.InvalidInputException;
-import com.capg.fms.login.exceptions.InvalidUserNameAndPasswordException;
-import com.capg.fms.login.model.User;
-import com.capg.fms.login.repository.IUserJpaRepo;
-import com.capg.fms.login.service.ILoginService;
-import com.capg.fms.login.service.IUserAccountCreationService;
+import com.capg.fms.user.exceptions.InvalidInputException;
+import com.capg.fms.user.exceptions.InvalidUserNameAndPasswordException;
+import com.capg.fms.user.model.User;
+import com.capg.fms.user.repository.IUserJpaRepo;
+import com.capg.fms.user.service.ILoginService;
+import com.capg.fms.user.service.IUserAccountCreationService;
 
 @SpringBootTest
-class FmsLoginMsApplicationTests {
+class FmsUserMsApplicationTests {
 	
 	@Autowired
 	IUserAccountCreationService userService;

@@ -1,11 +1,11 @@
-package com.capg.fms.login.service;
+package com.capg.fms.user.service;
 
 import java.util.List;
 
-import com.capg.fms.login.model.Booking;
-import com.capg.fms.login.model.BookingList;
-import com.capg.fms.login.model.Flight;
-import com.capg.fms.login.model.FlightList;
+import com.capg.fms.user.model.Booking;
+import com.capg.fms.user.model.BookingList;
+import com.capg.fms.user.model.Flight;
+import com.capg.fms.user.model.FlightList;
 
 public interface ICustomerService {
 	

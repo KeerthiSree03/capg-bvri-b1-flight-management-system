@@ -1,4 +1,4 @@
-package com.capg.fms.login.exceptions;
+package com.capg.fms.user.exceptions;
 
 public class InvalidUserNameAndPasswordException extends RuntimeException{
 	
