@@ -1,13 +1,5 @@
 package com.capg.fms.user.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-
-
 public class ScheduledFlight {
 	
 	private int scheduledFlightId;

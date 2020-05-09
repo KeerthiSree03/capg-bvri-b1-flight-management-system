@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.fms.airport.model.Airport;
+import com.capg.fms.airport.model.AirportList;
 import com.capg.fms.airport.service.IAirportService;
 
 //Author                : G.Harshitha
@@ -31,9 +32,9 @@ public class AirportController {
 
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<Airport>> getAllAirports(){
-		List<Airport> allAirports = service.getAllAirports();
-		return new ResponseEntity<List<Airport>>(allAirports,HttpStatus.OK);
+	public ResponseEntity<AirportList> getAllAirports(){
+		AirportList allAirports = service.getAllAirports();
+		return new ResponseEntity<AirportList>(allAirports,HttpStatus.OK);
 	}
 
 	
