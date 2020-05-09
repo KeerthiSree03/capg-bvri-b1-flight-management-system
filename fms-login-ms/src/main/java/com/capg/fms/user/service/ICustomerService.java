@@ -16,11 +16,12 @@ public interface ICustomerService {
 	public boolean checkSeatAvailability(long flightNumber, int availableSeats);
 	public String checkSource(long flightNumber,String sourceAirport);
 	public String checkDestination(long flightNumber,String destinationAirport);
-	public String checkSourceAndDestination( long flightNumber,  String sourceAirport, String destinationAirport);
+	public String checkSourceAndDestination(String sourceAirport, String destinationAirport);
 	
 	Booking makeBooking(Booking booking);
 	BookingList viewBookingList();
 	void cancelBooking(long booking);
 	Booking modifyBooking(Booking booking);
+	public Booking viewBookingByBookingId(long bookingId);
 
 }

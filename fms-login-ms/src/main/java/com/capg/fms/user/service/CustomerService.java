@@ -43,10 +43,10 @@ public class CustomerService implements ICustomerService {
 				String.class);
 	}
 
-	public String checkSourceAndDestination(long flightNumber, String sourceAirport, String destinationAirport) {
+	public String checkSourceAndDestination(String sourceAirport, String destinationAirport) {
 
 		return restTemplate.getForObject(
-				"http://schedule-ms/availabilityflight/" + flightNumber + sourceAirport + destinationAirport,
+				"http://schedule-ms/availabilityflight/"+ sourceAirport + destinationAirport,
 				String.class);
 	}
 
@@ -73,6 +73,12 @@ public class CustomerService implements ICustomerService {
 	public Booking modifyBooking(Booking booking) {
 
 		return restTemplate.postForObject("http://booking-ms/booking/modify", booking, Booking.class);
+	}
+
+	@Override
+	public Booking viewBookingByBookingId(long bookingId) {
+		// TODO Auto-generated method stub
+		return restTemplate.getForObject("http://booking-ms/booking/id/"+bookingId, Booking.class);
 	}
 
 }

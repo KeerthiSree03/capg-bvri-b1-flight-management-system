@@ -41,8 +41,8 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	public String checkScheduledFlightById(long flightNumber) {
 
 		if(!flightRepository.existsByFlightNumber(flightNumber)) {
-			System.out.println(flightNumber);
-			throw new FlightNotFoundException("FlightNumber with "+flightNumber+" is NOT FOUND");
+			
+			throw new InvalidInputException("No availability");
 		}
 		return "The flight is available";
 	}
@@ -57,14 +57,14 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	***************************************************************************/
 	
 	@Override
-	public boolean checkSeatAvailability(long flightNumber, int availableSeats) throws SeatsAreNotAvailableException{
+	public boolean checkSeatAvailability(long flightNumber, int availableSeats) {
 		
-		if(flightRepository.existsByFlightNumber(flightNumber)) {
-			if(availableSeats<=0) {
-				throw new SeatsAreNotAvailableException("Seats are not available in "+flightNumber);
-			}
+		if (!flightRepository.existsByFlightNumber(flightNumber)) {
+			throw new InvalidInputException("Please Check Flight Number");
 		}
-//		return flightRepository.existsAvailableSeats(availableSeats);	
+		else if (flightRepository.existsAvailableSeats(availableSeats) != flightRepository.exists(availableSeats)|| availableSeats <= 0) {
+			throw new InvalidInputException("No availability");
+		}	
 		return true;
 	}
 
@@ -116,15 +116,15 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	***************************************************************************/
 
 	@Override
-	public String checkSourceAndDestination(long flightNumber, String sourceAirport, String destinationAirport) {
-		if(flightRepository.existsByFlightNumber(flightNumber)) {
+	public String checkSourceAndDestination( String sourceAirport, String destinationAirport) {
+		
 			if(!scheduleRepo.findAll().contains(scheduleRepo.existsSourceAirport(sourceAirport))) {
 				throw new InvalidInputException("Flight is not available");
 			}
 			else if(flightRepository.findAll().contains(scheduleRepo.existsDestinationAirport(destinationAirport))) {
 				throw new InvalidInputException("Flight is not available");
 			}
-		}
+		
 		return "Flight is available";
 }
 	
