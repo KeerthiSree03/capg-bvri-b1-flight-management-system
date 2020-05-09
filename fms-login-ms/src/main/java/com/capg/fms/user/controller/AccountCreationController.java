@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.capg.fms.user.model.User;
+import com.capg.fms.user.model.UserCredentials;
 import com.capg.fms.user.service.IUserAccountCreationService;
 
 @RestController
@@ -34,5 +36,7 @@ public class AccountCreationController {
 	public User getUserByUserName(@PathVariable String username) {
 		return service.getUserByUserName(username);			
 	}
+	
+	
 
 }
