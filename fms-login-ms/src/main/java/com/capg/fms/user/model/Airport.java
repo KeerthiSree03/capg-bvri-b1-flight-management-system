@@ -1,11 +1,5 @@
 package com.capg.fms.user.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
-
-
 public class Airport {
 	
 	 	

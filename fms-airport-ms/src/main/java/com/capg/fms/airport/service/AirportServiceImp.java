@@ -1,7 +1,5 @@
 package com.capg.fms.airport.service;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.capg.fms.airport.exception.AirportAlreadyExistsException;
 import com.capg.fms.airport.exception.AirportNotFoundException;
 import com.capg.fms.airport.model.Airport;
+import com.capg.fms.airport.model.AirportList;
 import com.capg.fms.airport.repository.IAirportRepo;
 
 //Author                : G.Harshitha
@@ -29,8 +28,8 @@ public class AirportServiceImp implements IAirportService {
 //  Creation Date   : 28/04/2020
 //  Description     : getting all airports details stored in the database.
 	@Override
-	public List<Airport> getAllAirports() {
-		return airportRepo.findAll();
+	public AirportList getAllAirports() {
+		return new AirportList(airportRepo.findAll());
 	}
 	
 //	Function Name   : getAirportByCode

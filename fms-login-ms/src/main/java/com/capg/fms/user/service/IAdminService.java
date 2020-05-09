@@ -1,5 +1,8 @@
 package com.capg.fms.user.service;
 
+
+import com.capg.fms.user.model.Airport;
+import com.capg.fms.user.model.AirportList;
 import com.capg.fms.user.model.Flight;
 import com.capg.fms.user.model.ScheduledFlight;
 import com.capg.fms.user.model.ScheduledFlightList;
@@ -17,4 +20,9 @@ public interface IAdminService {
 	ScheduledFlight modifyScheduledFlight(ScheduledFlight  flight);
 	public ScheduledFlightList viewAllScheduledFlight();
 
+	
+	AirportList getAllAirports();
+	Airport getAirportByCode(String airportCode);
+	Airport addAirport(Airport airport);
+	void deleteAirport(String airportCode);
 }

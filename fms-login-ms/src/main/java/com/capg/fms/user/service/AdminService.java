@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.capg.fms.user.model.Airport;
+import com.capg.fms.user.model.AirportList;
 import com.capg.fms.user.model.Flight;
 import com.capg.fms.user.model.ScheduledFlight;
 import com.capg.fms.user.model.ScheduledFlightList;
@@ -66,6 +68,30 @@ public class AdminService implements IAdminService {
 	public ScheduledFlightList viewAllScheduledFlight() {
 		
 		return restTemplate.getForObject("http://schedule-ms/scheduleflight/viewall", ScheduledFlightList.class);
+	}
+
+	@Override
+	public AirportList getAllAirports() {
+		// TODO Auto-generated method stub
+		return restTemplate.getForObject("http://airport-ms/airport/all", AirportList.class);
+	}
+
+	@Override
+	public Airport getAirportByCode(String airportCode) {
+		// TODO Auto-generated method stub
+		return restTemplate.getForObject("http://airport-ms/airport/airport/{airportCode}", Airport.class);
+	}
+
+	@Override
+	public Airport addAirport(Airport airport) {
+		// TODO Auto-generated method stub
+		return restTemplate.postForObject("http://airport-ms/airport/add", airport, Airport.class);
+	}
+
+	@Override
+	public void deleteAirport(String airportCode) {
+		// TODO Auto-generated method stub
+		restTemplate.delete("http://airport-ms/airport/delete/{airportCode}");
 	}
 
 }

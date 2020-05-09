@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.capg.fms.user.model.Airport;
+import com.capg.fms.user.model.AirportList;
 import com.capg.fms.user.model.Flight;
 import com.capg.fms.user.model.ScheduledFlight;
 import com.capg.fms.user.model.ScheduledFlightList;
@@ -69,5 +71,23 @@ public class AdminController {
 		
 		return service.viewAllScheduledFlight();
 	}
+	
+	@GetMapping("/a/airport/all")
+	AirportList getAllAirports() {
+		return service.getAllAirports();
+	}
+	@GetMapping("/a/airport/{airportCode}")
+	Airport getAirportByCode(@PathVariable String airportCode) {
+		return service.getAirportByCode(airportCode);
+	}
+	@PostMapping("/a/airport/add")
+	Airport addAirport(@RequestBody Airport airport) {
+		return service.addAirport(airport);
+	}
+	@DeleteMapping("/a/airport/delete/{airportCode}")
+	void deleteAirport(@PathVariable String airportCode) {
+		service.deleteAirport(airportCode);
+	}
+	
 	
 }
