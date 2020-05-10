@@ -1,8 +1,5 @@
 package com.capg.fms.gateway.service;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -20,7 +17,6 @@ public class MyUserDetailsService{
 	TokenUtil tokenUtil;
 	
 	public UserInfo  loadUserByUserCrenditials(UserCredentials cred) {
-		// TODO Auto-generated method stub
 		UserInfo userInfo=null;
 		try {
 		userInfo = restTemplate.postForObject("http://user-ms/users/authenticate",cred, UserInfo.class);

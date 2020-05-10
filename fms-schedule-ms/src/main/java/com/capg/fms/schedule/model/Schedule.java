@@ -5,41 +5,33 @@ import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.client.RestTemplate;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Schedule {
-	
-	
-	
-	
 
 	@Id
 	@Column(name = "scheduleId")
 	private int scheduleId;// not mentioned in case study .......
-	
-	//private Airport sourceAirport;
+
+	// private Airport sourceAirport;
 
 	@Column(name = "sourceAirport")
 	private String sourceAirport;
-	
-	
-	//private Airport destinationAirport;
+
+	// private Airport destinationAirport;
 	@Column(name = "destinationAirport")
 	private String destinationAirport;
-	
+
 	@Column(name = "arrivalTime")
 	@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")
-	//@JsonFormat(pattern = "yyyy/MM/ddThh:mm:ss")
+	// @JsonFormat(pattern = "yyyy/MM/ddThh:mm:ss")
 	private LocalDateTime arrivalTime;
 	@Column(name = "departureTime")
 	@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")
-	//@JsonFormat(pattern = "yyyy/MM/ddThh:mm:ss")
-	
+	// @JsonFormat(pattern = "yyyy/MM/ddThh:mm:ss")
+
 	private LocalDateTime departureTime;
 
 	public Schedule() {
@@ -85,7 +77,7 @@ public class Schedule {
 		return arrivalTime;
 	}
 
-	public void setArrivalTime(@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")LocalDateTime arrivalTime) {
+	public void setArrivalTime(@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss") LocalDateTime arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
 
@@ -93,7 +85,7 @@ public class Schedule {
 		return departureTime;
 	}
 
-	public void setDepartureTime(@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")LocalDateTime departureTime) {
+	public void setDepartureTime(@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss") LocalDateTime departureTime) {
 		this.departureTime = departureTime;
 	}
 

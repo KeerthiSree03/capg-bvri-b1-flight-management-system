@@ -1,13 +1,11 @@
 package com.capg.fms.user.service;
 
-import java.util.List;
-
-import org.springframework.web.bind.annotation.PathVariable;
-
 import com.capg.fms.user.model.Booking;
 import com.capg.fms.user.model.BookingList;
-import com.capg.fms.user.model.Flight;
+//github.com/KeerthiSree03/capg-bvri-b1-flight-management-system.git
 import com.capg.fms.user.model.FlightList;
+import com.capg.fms.user.model.Passenger;
+import com.capg.fms.user.model.PassengerList;
 
 public interface ICustomerService {
 	
@@ -23,5 +21,13 @@ public interface ICustomerService {
 	void cancelBooking(long booking);
 	Booking modifyBooking(Booking booking);
 	public Booking viewBookingByBookingId(long bookingId);
+	
+
+	Passenger addPassenger(Passenger passenger);
+	void deletePassenger(long passengerNum);
+	Passenger getPassenger(long passengerNum);
+	PassengerList getAllPasssengers();
+	Passenger updatePassenger(Passenger passenger);
+	public long getCountOfPassenger();
 
 }

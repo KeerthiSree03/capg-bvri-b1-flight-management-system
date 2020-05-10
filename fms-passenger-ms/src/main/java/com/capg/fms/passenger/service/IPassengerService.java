@@ -1,7 +1,5 @@
 package com.capg.fms.passenger.service;
 
-import java.util.List;
-
 import com.capg.fms.passenger.model.Passenger;
 import com.capg.fms.passenger.model.PassengerList;
 
