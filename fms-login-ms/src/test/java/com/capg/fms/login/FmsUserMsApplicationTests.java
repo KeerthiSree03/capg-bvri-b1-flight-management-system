@@ -115,34 +115,5 @@ class FmsUserMsApplicationTests {
 		assertEquals(true, userService.validateUserName("Keerthi2Sree3"));
 	}
 	
-	@Test
-	public void testLoginCredentials() {
-		assertTrue(loginService.checkUserCredentials("Keerthi23", "123@Keerthi"));
-	}
-	
-	@Test
-	public void testInvalidLoginPassword() {
-	
-		Exception exception = assertThrows(InvalidUserNameAndPasswordException.class, () -> {
-			loginService.checkUserCredentials("Keerthi23", "123@Kreethi");
-		    });
-		 
-		    String expectedMessage = "Password mismatch";
-		    String actualMessage = exception.getMessage();
-		 
-		    assertTrue(actualMessage.contains(expectedMessage));
-	}
-	@Test
-	public void testInvalidLoginUserName() {
-	
-		Exception exception = assertThrows(InvalidUserNameAndPasswordException.class, () -> {
-			loginService.checkUserCredentials("Keerth1i23", "123@Kreethi");
-		    });
-		 
-		    String expectedMessage = "user with userName [Keerth1i23] NOT Found";
-		    String actualMessage = exception.getMessage();
-		 
-		    assertTrue(actualMessage.contains(expectedMessage));
-	}
 	
 }

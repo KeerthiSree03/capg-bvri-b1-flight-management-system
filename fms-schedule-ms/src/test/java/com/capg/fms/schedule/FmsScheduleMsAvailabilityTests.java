@@ -66,27 +66,12 @@ class FmsScheduleMsAvailabilityTests {
 		assertTrue(actualMessage.contains(expectedMessage));
 	}
 
-	@Test
-	public void testSourceAndDestinationAirport() throws InvalidInputException {
-		Exception exception = assertThrows(InvalidInputException.class, () -> {
 
-			availabilityService.checkSourceAndDestination("Vizag", "Mumbai");
-		});
-
-		String expectedMessage = "Flight is not available";
-		String actualMessage = exception.getMessage();
-		assertTrue(actualMessage.contains(expectedMessage));
-
-			
-		    
-		 
-		   
-
-	}
+	
 
 	@Test
 	public void testAvailableSeats() {
 		assertTrue(availabilityService.checkSeatAvailability(446233628412L, 21));
 	}
-	}
+}
 

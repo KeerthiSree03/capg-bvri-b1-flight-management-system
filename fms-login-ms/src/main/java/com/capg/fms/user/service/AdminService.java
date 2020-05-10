@@ -24,13 +24,11 @@ public class AdminService implements IAdminService {
 	
 	@Override
 	public Flight addFlight(Flight flight) {
-		// TODO Auto-generated method stub
 		return restTemplate.postForObject("http://flight-ms/flights/add", flight, Flight.class);
 	}
 
 	@Override
 	public Flight viewFlight(long flightNumber) {
-		// TODO Auto-generated method stub
 		return restTemplate.getForObject("http://flight-ms/flights/id/"+flightNumber ,Flight.class);
 	}
 
@@ -42,7 +40,6 @@ public class AdminService implements IAdminService {
 
 	@Override
 	public Flight modifyFlight(Flight flight) {
-		// TODO Auto-generated method stub
 		return restTemplate.postForObject("http://flight-ms/flights/modify", flight, Flight.class);
 	}
 
@@ -50,7 +47,6 @@ public class AdminService implements IAdminService {
 	public ScheduledFlight addScheduledFlight(ScheduledFlight scheduledFlight) {
 		
 		System.err.println(scheduledFlight.getSchedule().getArrivalTime());
-		// TODO Auto-generated method stub
 		return restTemplate.postForObject("http://schedule-ms/scheduleflight/add", scheduledFlight, ScheduledFlight.class);
 	}
 
@@ -62,43 +58,39 @@ public class AdminService implements IAdminService {
 
 	@Override
 	public void cancelScheduledFlight(long  scheduledFlightId) {
-		// TODO Auto-generated method stub
 		restTemplate.delete("http://schedule-ms/scheduleflight/delete/"+scheduledFlightId);
 	}
 
 	@Override
 	public ScheduledFlight modifyScheduledFlight(ScheduledFlight scheduledFlight) {
-		// TODO Auto-generated method stub
 		return restTemplate.postForObject("http://schedule-ms/scheduleflight/modify", scheduledFlight , ScheduledFlight.class);
 	}
+	
 	public ScheduledFlightList viewAllScheduledFlight() {
-		
 		return restTemplate.getForObject("http://schedule-ms/scheduleflight/viewall", ScheduledFlightList.class);
 	}
 
 	@Override
 	public AirportList getAllAirports() {
-		// TODO Auto-generated method stub
 		return restTemplate.getForObject("http://airport-ms/airport/all", AirportList.class);
 	}
 
 	@Override
 	public Airport getAirportByCode(String airportCode) {
-		// TODO Auto-generated method stub
 		return restTemplate.getForObject("http://airport-ms/airport/airport/{airportCode}", Airport.class);
 	}
 
 	@Override
 	public Airport addAirport(Airport airport) {
-		// TODO Auto-generated method stub
 		return restTemplate.postForObject("http://airport-ms/airport/add", airport, Airport.class);
 	}
 
 	@Override
 	public void deleteAirport(String airportCode) {
-		// TODO Auto-generated method stub
+
 		System.err.println("admin" + airportCode);
 		restTemplate.delete("http://airport-ms/airport/delete/"+airportCode);
+
 	}
 
 }

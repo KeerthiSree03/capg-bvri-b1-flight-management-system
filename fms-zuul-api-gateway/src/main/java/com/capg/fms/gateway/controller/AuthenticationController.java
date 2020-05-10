@@ -15,7 +15,7 @@ import com.capg.fms.gateway.service.MyUserDetailsService;
 import com.capg.fms.gateway.util.TokenUtil;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "http://localhost:4200",allowedHeaders ="*" )
 public class AuthenticationController {
 	
 	@Autowired
