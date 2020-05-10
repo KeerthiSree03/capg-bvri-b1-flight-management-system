@@ -9,10 +9,8 @@ package com.capg.fms.schedule.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import com.capg.fms.schedule.excepions.FlightNotFoundException;
+
 import com.capg.fms.schedule.excepions.InvalidInputException;
-import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
 import com.capg.fms.schedule.repository.IAvailabilityScheduleRepo;
 import com.capg.fms.schedule.repository.IAvailabilityScheduledFlightRepo;
 
@@ -32,7 +30,7 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	 -FunctionName          : checkScheduledFlightById
 	 -Input Parameters      : long flightNumber
 	 -Return Type           : String
-	 -Throws				: FlightNotFoundException
+	 -Throws				: InvalidInputException
 	 -Author				: Karthikeswar Rao 
 	 -Creation Date			: 28/04/2020
 	***************************************************************************/
@@ -51,7 +49,7 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	 -FunctionName          : checkSeatAvailability
 	 -Input Parameters      : long flightNumber, int availableSeats
 	 -Return Type           : boolean
-	 -Throws				: SeatsAreNotAvailableException
+	 -Throws				: InvalidInputException
 	 -Author				: Karthikeswar Rao 
 	 -Creation Date			: 28/04/2020
 	***************************************************************************/
@@ -121,7 +119,7 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 			if(!scheduleRepo.findAll().contains(scheduleRepo.existsSourceAirport(sourceAirport))) {
 				throw new InvalidInputException("Flight is not available");
 			}
-			else if(flightRepository.findAll().contains(scheduleRepo.existsDestinationAirport(destinationAirport))) {
+			else if(!flightRepository.findAll().contains(scheduleRepo.existsDestinationAirport(destinationAirport))) {
 				throw new InvalidInputException("Flight is not available");
 			}
 		

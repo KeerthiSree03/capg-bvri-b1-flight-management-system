@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.capg.fms.user.model.Booking;
 import com.capg.fms.user.model.BookingList;
 import com.capg.fms.user.model.FlightList;
+import com.capg.fms.user.model.Passenger;
+import com.capg.fms.user.model.PassengerList;
 import com.capg.fms.user.service.ICustomerService;
 
 @RestController
@@ -58,7 +60,7 @@ public class CustomerController {
 	public Booking makeBooking(@RequestBody Booking booking) {
 
 		return service.makeBooking(booking);
-
+ 
 	}
 
 	@GetMapping("/u/booking/all")
@@ -81,7 +83,38 @@ public class CustomerController {
 
 	@GetMapping("/u/booking/id/{bookingId}")
 	public Booking viewBookingByBookingId(long bookingId) {
-	return service.viewBookingByBookingId(bookingId);	
-		
+		return service.viewBookingByBookingId(bookingId);
+
 	}
+
+	@PostMapping("/u/passenger/add")
+	Passenger addPassenger(Passenger passenger) {
+		return service.addPassenger(passenger);
+	}
+
+	@DeleteMapping("/u/passenger/delete/num/{passengerNum}")
+	void deletePassenger(long passengerNum) {
+		service.deletePassenger(passengerNum);
+	}
+
+	@GetMapping("/u/passenger/num/{passengerNum}")
+	Passenger getPassenger(long passengerNum) {
+		return service.getPassenger(passengerNum);
+	}
+
+	@GetMapping("/u/passenger/all")
+	PassengerList getAllPasssengers() {
+		return service.getAllPasssengers();
+	}
+
+	@PostMapping("/u/passenger/update")
+	Passenger updatePassenger(Passenger passenger) {
+		return service.updatePassenger(passenger);
+	}
+
+	@GetMapping("/u/passenger/getcount")
+	public long getCountOfPassenger() {
+		return service.getCountOfPassenger();
+	}
+
 }

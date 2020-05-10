@@ -9,6 +9,8 @@ import com.capg.fms.user.model.Booking;
 import com.capg.fms.user.model.BookingList;
 import com.capg.fms.user.model.Flight;
 import com.capg.fms.user.model.FlightList;
+import com.capg.fms.user.model.Passenger;
+import com.capg.fms.user.model.PassengerList;
 
 @Service
 public class CustomerService implements ICustomerService {
@@ -45,8 +47,7 @@ public class CustomerService implements ICustomerService {
 
 	public String checkSourceAndDestination(String sourceAirport, String destinationAirport) {
 
-		return restTemplate.getForObject(
-				"http://schedule-ms/availabilityflight/"+ sourceAirport + destinationAirport,
+		return restTemplate.getForObject("http://schedule-ms/availabilityflight/" + sourceAirport + destinationAirport,
 				String.class);
 	}
 
@@ -59,7 +60,7 @@ public class CustomerService implements ICustomerService {
 
 	@Override
 	public BookingList viewBookingList() {
-		// TODO Auto-generated method stub
+
 		return restTemplate.getForObject("http://booking-ms/booking/all", BookingList.class);
 	}
 
@@ -77,8 +78,44 @@ public class CustomerService implements ICustomerService {
 
 	@Override
 	public Booking viewBookingByBookingId(long bookingId) {
-		// TODO Auto-generated method stub
-		return restTemplate.getForObject("http://booking-ms/booking/id/"+bookingId, Booking.class);
+
+		return restTemplate.getForObject("http://booking-ms/booking/id/" + bookingId, Booking.class);
+	}
+
+	@Override
+	public Passenger addPassenger(Passenger passenger) {
+
+		return restTemplate.postForObject("http://passenger-ms/passenger/add", passenger, Passenger.class);
+	}
+
+	@Override
+	public void deletePassenger(long passengerNum) {
+
+		restTemplate.delete("http://passenger-ms/passenger/delete/num/" + passengerNum);
+	}
+
+	@Override
+	public Passenger getPassenger(long passengerNum) {
+
+		return restTemplate.getForObject("http://passenger-ms/passenger/num/" + passengerNum, Passenger.class);
+	}
+
+	@Override
+	public PassengerList getAllPasssengers() {
+
+		return restTemplate.getForObject("http://passenger-ms/passenger/all", PassengerList.class);
+	}
+
+	@Override
+	public Passenger updatePassenger(Passenger passenger) {
+
+		return restTemplate.postForObject("http://passenger-ms/passenger/update", passenger, Passenger.class);
+	}
+
+	@Override
+	public long getCountOfPassenger() {
+
+		return restTemplate.getForObject("http://passenger-ms/passenger/getcount", long.class);
 	}
 
 }
