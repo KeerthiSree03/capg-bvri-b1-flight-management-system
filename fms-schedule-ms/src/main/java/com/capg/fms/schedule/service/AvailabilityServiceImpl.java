@@ -10,9 +10,7 @@ package com.capg.fms.schedule.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import com.capg.fms.schedule.excepions.FlightNotFoundException;
 import com.capg.fms.schedule.excepions.InvalidInputException;
-import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
 import com.capg.fms.schedule.repository.IAvailabilityScheduleRepo;
 import com.capg.fms.schedule.repository.IAvailabilityScheduledFlightRepo;
 
