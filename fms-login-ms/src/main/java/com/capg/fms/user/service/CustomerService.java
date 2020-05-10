@@ -2,12 +2,12 @@ package com.capg.fms.user.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.client.RestTemplate;
 
 import com.capg.fms.user.model.Booking;
 import com.capg.fms.user.model.BookingList;
-import com.capg.fms.user.model.Flight;
+
 import com.capg.fms.user.model.FlightList;
 
 @Service
@@ -59,7 +59,7 @@ public class CustomerService implements ICustomerService {
 
 	@Override
 	public BookingList viewBookingList() {
-		// TODO Auto-generated method stub
+		
 		return restTemplate.getForObject("http://booking-ms/booking/all", BookingList.class);
 	}
 
@@ -77,7 +77,7 @@ public class CustomerService implements ICustomerService {
 
 	@Override
 	public Booking viewBookingByBookingId(long bookingId) {
-		// TODO Auto-generated method stub
+
 		return restTemplate.getForObject("http://booking-ms/booking/id/"+bookingId, Booking.class);
 	}
 

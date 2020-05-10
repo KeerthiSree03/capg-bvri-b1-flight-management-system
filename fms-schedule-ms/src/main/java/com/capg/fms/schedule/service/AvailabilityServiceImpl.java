@@ -9,7 +9,6 @@ package com.capg.fms.schedule.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 import com.capg.fms.schedule.excepions.InvalidInputException;
 import com.capg.fms.schedule.repository.IAvailabilityScheduleRepo;
 import com.capg.fms.schedule.repository.IAvailabilityScheduledFlightRepo;
@@ -20,9 +19,6 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	@Autowired
 	IAvailabilityScheduledFlightRepo flightRepository;
 	
-	/*
-	 * @Autowired RestTemplate restTemplate;
-	 */
 	@Autowired
 	IAvailabilityScheduleRepo scheduleRepo;
 	
@@ -119,7 +115,7 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 			if(!scheduleRepo.findAll().contains(scheduleRepo.existsSourceAirport(sourceAirport))) {
 				throw new InvalidInputException("Flight is not available");
 			}
-			else if(flightRepository.findAll().contains(scheduleRepo.existsDestinationAirport(destinationAirport))) {
+			else if(!flightRepository.findAll().contains(scheduleRepo.existsDestinationAirport(destinationAirport))) {
 				throw new InvalidInputException("Flight is not available");
 			}
 		

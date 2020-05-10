@@ -1,13 +1,8 @@
 package com.capg.fms.passenger.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-
-import com.capg.fms.passenger.exceptions.EmptyPassengerListException;
 import com.capg.fms.passenger.exceptions.PassengerAlreadyExistException;
 import com.capg.fms.passenger.exceptions.PassengerNotFoundException;
 import com.capg.fms.passenger.model.Passenger;
