@@ -20,6 +20,7 @@ import com.capg.fms.user.service.AdminService;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AdminController {
 
 	@Autowired

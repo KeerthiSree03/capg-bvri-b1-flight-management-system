@@ -19,6 +19,6 @@ public interface IAvailabilityService {
 
 	String checkSourceAndDestination(String sourceAirport, String destinationAirport);
 
-	boolean validateFlightId(long flightNumber);
+	//boolean validateFlightId(long flightNumber);
 
 }

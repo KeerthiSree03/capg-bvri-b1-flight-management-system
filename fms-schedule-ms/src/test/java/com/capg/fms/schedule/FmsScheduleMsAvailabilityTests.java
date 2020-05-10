@@ -16,28 +16,26 @@ class FmsScheduleMsAvailabilityTests {
 
 	@Autowired
 	IAvailabilityService availabilityService;
+	/*
+	 * @Test public void testFlightNumberwithLessDigits() throws
+	 * InvalidInputException {
+	 * 
+	 * Exception exception = assertThrows(InvalidInputException.class, () -> {
+	 * availabilityService.validateFlightId(4567890L); }); String expectedMessage =
+	 * "ID should be of 12 digits"; String actualMessage = exception.getMessage();
+	 * assertTrue(actualMessage.contains(expectedMessage)); }
+	 */
 
-	@Test
-	public void testFlightNumberwithLessDigits() throws InvalidInputException {
-
-		Exception exception = assertThrows(InvalidInputException.class, () -> {
-			availabilityService.validateFlightId(4567890L);
-		});
-		String expectedMessage = "ID should be of 12 digits";
-		String actualMessage = exception.getMessage();
-		assertTrue(actualMessage.contains(expectedMessage));
-	}
-
-	@Test
-	public void testFlightNumberwithMoreDigits() throws InvalidInputException {
-		Exception exception = assertThrows(InvalidInputException.class, () -> {
-			availabilityService.validateFlightId(1234345678907856L);
-		});
-
-		String expectedMessage = "ID should be of 12 digits";
-		String actualMessage = exception.getMessage();
-		assertTrue(actualMessage.contains(expectedMessage));
-	}
+	/*
+	 * @Test public void testFlightNumberwithMoreDigits() throws
+	 * InvalidInputException { Exception exception =
+	 * assertThrows(InvalidInputException.class, () -> {
+	 * availabilityService.validateFlightId(1234345678907856L); });
+	 * 
+	 * String expectedMessage = "ID should be of 12 digits"; String actualMessage =
+	 * exception.getMessage(); assertTrue(actualMessage.contains(expectedMessage));
+	 * }
+	 */
 
 	@Test
 	public void testFlightNumber() {
