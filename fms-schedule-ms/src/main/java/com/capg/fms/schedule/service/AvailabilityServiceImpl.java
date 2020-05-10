@@ -10,6 +10,7 @@ package com.capg.fms.schedule.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+//github.com/KeerthiSree03/capg-bvri-b1-flight-management-system.git
 import com.capg.fms.schedule.excepions.InvalidInputException;
 import com.capg.fms.schedule.repository.IAvailabilityScheduleRepo;
 import com.capg.fms.schedule.repository.IAvailabilityScheduledFlightRepo;
@@ -20,9 +21,6 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	@Autowired
 	IAvailabilityScheduledFlightRepo flightRepository;
 	
-	/*
-	 * @Autowired RestTemplate restTemplate;
-	 */
 	@Autowired
 	IAvailabilityScheduleRepo scheduleRepo;
 	

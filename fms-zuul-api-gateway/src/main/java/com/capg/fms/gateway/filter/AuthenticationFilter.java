@@ -50,10 +50,11 @@ public class AuthenticationFilter extends ZuulFilter{
 	        			 return null;
 	        		 }
 	        	 }
-	        	 else if(uri.contains("users/p/")) {
-	        		return null;
-	        	 }
+	        	 
 	        }
+	        else if(uri.contains("users/p/")) {
+        		return null;
+        	 }
 	        	
 	        	context.setSendZuulResponse(false);
 	        	context.setResponseStatusCode(401);
