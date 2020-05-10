@@ -17,62 +17,71 @@ import com.capg.fms.user.service.ICustomerService;
 @RestController
 @RequestMapping("/users")
 public class CustomerController {
-	
+
 	@Autowired
 	ICustomerService service;
-	
+
 	@GetMapping("/u/flights/all")
 	public FlightList viewAllFlights() {
-		
+
 		return service.viewAllFlights();
 	}
-	
+
 	@GetMapping("/u/availability/{flightNumber}")
 	public String checkScheduledFlightById(@PathVariable long flightNumber) {
 		return service.checkScheduledFlightById(flightNumber);
 	}
-	
+
 	@GetMapping("/u/availability/{flightNumber}/{availableSeats}")
-	public boolean checkSeatAvailability(@PathVariable long flightNumber,@PathVariable int availableSeats) {
+	public boolean checkSeatAvailability(@PathVariable long flightNumber, @PathVariable int availableSeats) {
 		return service.checkSeatAvailability(flightNumber, availableSeats);
 	}
-	
+
 	@GetMapping("/u/availability/{flightNumber}/source/{availableSeats}")
-	public String checkSource(@PathVariable long flightNumber,@PathVariable String sourceAirport) {
+	public String checkSource(@PathVariable long flightNumber, @PathVariable String sourceAirport) {
 		return service.checkDestination(flightNumber, sourceAirport);
 	}
+
 	@GetMapping("/u/availability/{flightNumber}/destination/{availableSeats}")
-	public String checkDestination(@PathVariable long flightNumber,@PathVariable String destinationAirport) {
+	public String checkDestination(@PathVariable long flightNumber, @PathVariable String destinationAirport) {
 		return service.checkDestination(flightNumber, destinationAirport);
 	}
-	@GetMapping("/{flightNumber}/source/{sourceAirport}/destination/{destinationAirport}")
-	public String checkSourceAndDestination(@PathVariable long flightNumber,@PathVariable String sourceAirport,@PathVariable String destinationAirport) {
-		
-		return service.checkSourceAndDestination(flightNumber, sourceAirport, destinationAirport);
+
+	@GetMapping("/u/source/{sourceAirport}/destination/{destinationAirport}")
+	public String checkSourceAndDestination(@PathVariable String sourceAirport,
+			@PathVariable String destinationAirport) {
+
+		return service.checkSourceAndDestination(sourceAirport, destinationAirport);
 	}
-	
+
 	@PostMapping("/u/booking/add")
 	public Booking makeBooking(@RequestBody Booking booking) {
-		
+
 		return service.makeBooking(booking);
-		
+
 	}
 
 	@GetMapping("/u/booking/all")
 	public BookingList viewBookingList() {
-	
+
 		return service.viewBookingList();
 	}
+
 	@DeleteMapping("/u/delete/{bookingId}")
 	public void cancelBooking(@PathVariable long bookingId) {
-		
-		
+
 		service.cancelBooking(bookingId);
 	}
-	@PostMapping("/u/modify")
+
+	@PostMapping("/u/booking/modify")
 	public Booking modifyBooking(@RequestBody Booking booking) {
-		
+
 		return service.modifyBooking(booking);
 	}
-	
+
+	@GetMapping("/u/booking/id/{bookingId}")
+	public Booking viewBookingByBookingId(long bookingId) {
+	return service.viewBookingByBookingId(bookingId);	
+		
+	}
 }
