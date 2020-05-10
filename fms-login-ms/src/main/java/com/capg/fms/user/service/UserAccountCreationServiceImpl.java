@@ -5,7 +5,9 @@ import java.util.Arrays;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.capg.fms.user.exceptions.InvalidInputException;
 import com.capg.fms.user.model.User;
@@ -27,6 +29,9 @@ public class UserAccountCreationServiceImpl implements IUserAccountCreationServi
 
 	@Override
 	public User addUser(User user) {
+		if(repo.existsByUserName(user.getUserName()) || repo.existsByUserId(user.getUserId())) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+		}
 		return repo.save(user);
 	}
 	@Override
