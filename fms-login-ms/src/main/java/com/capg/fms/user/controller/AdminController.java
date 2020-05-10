@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.capg.fms.user.model.Airport;
 import com.capg.fms.user.model.AirportList;
 import com.capg.fms.user.model.Flight;
+import com.capg.fms.user.model.FlightList;
 import com.capg.fms.user.model.ScheduledFlight;
 import com.capg.fms.user.model.ScheduledFlightList;
 import com.capg.fms.user.service.AdminService;
@@ -24,6 +25,11 @@ public class AdminController {
 
 	@Autowired
 	AdminService service;
+	
+	@GetMapping("/a/flights/all")
+	public FlightList viewAllFlights() {
+		return service.viewAllFlights();
+	}
 	
 	@PostMapping("/a/flights/add")
 	public Flight addFlight(@RequestBody Flight flight) {

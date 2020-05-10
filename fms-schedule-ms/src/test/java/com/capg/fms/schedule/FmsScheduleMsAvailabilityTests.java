@@ -69,35 +69,24 @@ class FmsScheduleMsAvailabilityTests {
 	@Test
 	public void testSourceAndDestinationAirport() throws InvalidInputException {
 		Exception exception = assertThrows(InvalidInputException.class, () -> {
-<<<<<<< HEAD
+
 			availabilityService.checkSourceAndDestination("Vizag", "Mumbai");
 		});
 
 		String expectedMessage = "Flight is not available";
 		String actualMessage = exception.getMessage();
 		assertTrue(actualMessage.contains(expectedMessage));
-=======
-			 availabilityService.checkSourceAndDestination("Vizag", "Mumbai");
-		    });
+
+			
+		    
 		 
-		    String expectedMessage = "Flight is not available";
-		    String actualMessage = exception.getMessage();
-		    assertTrue(actualMessage.contains(expectedMessage));
->>>>>>> branch 'master' of https://github.com/KeerthiSree03/capg-bvri-b1-flight-management-system.git
+		   
+
 	}
 
 	@Test
 	public void testAvailableSeats() {
 		assertTrue(availabilityService.checkSeatAvailability(446233628412L, 21));
 	}
-<<<<<<< HEAD
+	}
 
-//	@Test
-//	public void testNoAvailableSeats() throws SeatsAreNotAvailableException {
-//		assertFalse(availabilityService.checkSeatAvailability(446233628412L,));
-//	}
-}
-=======
-}	
-
->>>>>>> branch 'master' of https://github.com/KeerthiSree03/capg-bvri-b1-flight-management-system.git

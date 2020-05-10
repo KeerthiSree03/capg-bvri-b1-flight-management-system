@@ -76,6 +76,9 @@ public class AirportServiceImp implements IAirportService {
 	@Override
 	@Transactional
 	public void deleteAirport(String airportCode) {
+		
+		System.err.println("airport "+ airportCode);
+		
 		if(!airportRepo.existsById(airportCode)){
 			throw new AirportNotFoundException("Airport with code : ["+airportCode+"] Not Found");
 		}

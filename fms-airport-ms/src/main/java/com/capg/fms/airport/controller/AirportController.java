@@ -51,9 +51,10 @@ public class AirportController {
 	}
 
 	@DeleteMapping("/delete/{airportCode}")
-	public ResponseEntity<Airport> deleteAirport( @PathVariable String airportCode) {
+	public void deleteAirport( @PathVariable String airportCode) {
+		System.err.println("airport controller"+ airportCode);
 		 service.deleteAirport(airportCode);
-		 return new ResponseEntity<Airport>(HttpStatus.OK);
+		 
 	}
 	
 	@ExceptionHandler(Exception.class)

@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 import com.capg.fms.user.model.Airport;
 import com.capg.fms.user.model.AirportList;
 import com.capg.fms.user.model.Flight;
+import com.capg.fms.user.model.FlightList;
 import com.capg.fms.user.model.ScheduledFlight;
 import com.capg.fms.user.model.ScheduledFlightList;
 
@@ -16,6 +17,11 @@ public class AdminService implements IAdminService {
 	@Autowired
 	RestTemplate restTemplate;
 
+	public FlightList viewAllFlights() {
+
+		return restTemplate.getForObject("http://flight-ms/flights/all", FlightList.class);
+	}
+	
 	@Override
 	public Flight addFlight(Flight flight) {
 		// TODO Auto-generated method stub
@@ -91,7 +97,8 @@ public class AdminService implements IAdminService {
 	@Override
 	public void deleteAirport(String airportCode) {
 		// TODO Auto-generated method stub
-		restTemplate.delete("http://airport-ms/airport/delete/{airportCode}");
+		System.err.println("admin" + airportCode);
+		restTemplate.delete("http://airport-ms/airport/delete/"+airportCode);
 	}
 
 }
