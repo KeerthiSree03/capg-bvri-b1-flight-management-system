@@ -26,7 +26,6 @@ public class MyUserDetailsService{
 		userInfo = restTemplate.postForObject("http://user-ms/users/authenticate",cred, UserInfo.class);
 		}
 		catch (Exception e) {
-			//throw new ResponseStatusException(HttpStatus.FORBIDDEN,e.getMessage());
 			return null;
 			}
 		if(userInfo==null) {

@@ -19,7 +19,6 @@ import com.capg.fms.user.service.AdminService;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins =  "http://localhost:4200")
 public class AdminController {
 
 	@Autowired
@@ -90,6 +89,7 @@ public class AdminController {
 	void deleteAirport(@PathVariable String airportCode) {
 		service.deleteAirport(airportCode);
 	}
+
 	
 	
 }

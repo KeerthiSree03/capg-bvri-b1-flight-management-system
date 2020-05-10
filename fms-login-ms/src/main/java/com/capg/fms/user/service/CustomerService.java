@@ -18,7 +18,6 @@ public class CustomerService implements ICustomerService {
 
 	@Override
 	public FlightList viewAllFlights() {
-
 		return restTemplate.getForObject("http://flight-ms/flights/all", FlightList.class);
 	}
 
@@ -32,19 +31,16 @@ public class CustomerService implements ICustomerService {
 	}
 
 	public String checkSource(long flightNumber, String sourceAirport) {
-
 		return restTemplate.getForObject("http://schedule-ms/availabilityflight/" + flightNumber + sourceAirport,
 				String.class);
 	}
 
 	public String checkDestination(long flightNumber, String destinationAirport) {
-
 		return restTemplate.getForObject("http://schedule-ms/availabilityflight/" + flightNumber + destinationAirport,
 				String.class);
 	}
 
 	public String checkSourceAndDestination(String sourceAirport, String destinationAirport) {
-
 		return restTemplate.getForObject(
 				"http://schedule-ms/availabilityflight/"+ sourceAirport + destinationAirport,
 				String.class);
@@ -52,20 +48,17 @@ public class CustomerService implements ICustomerService {
 
 	@Override
 	public Booking makeBooking(Booking booking) {
-
 		return restTemplate.postForObject("http://booking-ms/booking/add", booking, Booking.class);
 
 	}
 
 	@Override
 	public BookingList viewBookingList() {
-		// TODO Auto-generated method stub
 		return restTemplate.getForObject("http://booking-ms/booking/all", BookingList.class);
 	}
 
 	@Override
 	public void cancelBooking(long bookingId) {
-
 		restTemplate.delete("http://booking-ms/booking/delete/" + bookingId);
 	}
 
@@ -77,7 +70,6 @@ public class CustomerService implements ICustomerService {
 
 	@Override
 	public Booking viewBookingByBookingId(long bookingId) {
-		// TODO Auto-generated method stub
 		return restTemplate.getForObject("http://booking-ms/booking/id/"+bookingId, Booking.class);
 	}
 

@@ -19,7 +19,6 @@ public class UserAccountCreationServiceImpl implements IUserAccountCreationServi
 	@Autowired
 	IUserJpaRepo repo;
 	
-	
 	@PostConstruct
 	public void addSomeUsers() {
 		User user1=new User("admin",125364125321L,"Keerthi23","keerthi@Capg23",9854235621L,"keerthi@gmail.com");
@@ -36,7 +35,6 @@ public class UserAccountCreationServiceImpl implements IUserAccountCreationServi
 	}
 	@Override
 	public User getUserByUserName(String userName) {
-		// TODO Auto-generated method stub
 		return repo.getUserByUserName(userName);
 	}
 	
@@ -93,10 +91,7 @@ public class UserAccountCreationServiceImpl implements IUserAccountCreationServi
 			throw new InvalidInputException("Username should contain atleast 8 alphanumeric characters");
 			
 		}
-//		else if(repo.existsByUserName(userName))
-//			throw new InvalidInputException("Username ["+userName+"] already exists");
-//		else
-			return true;
+		return true;
 	}
 	
 	public boolean validateUserType(String userType) {

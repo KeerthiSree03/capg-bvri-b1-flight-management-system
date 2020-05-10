@@ -21,23 +21,11 @@ import com.capg.fms.user.service.ILoginService;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "http://localhost:4200")
 public class LoginController {
 
 	@Autowired
 	ILoginService service;
 	
-	
-	
-	@GetMapping("/p/user-name/{userName}")
-	public User getUserByUserName(@PathVariable String userName) {
-		return service.getUser(userName);
-	}
-	
-	@GetMapping("/p/message")
-	public String getMessage() {
-		return "Hello All";
-	}
 	
 	@PostMapping("/authenticate")
 	public User authenticateUser(@RequestBody UserCredentials credentials) {

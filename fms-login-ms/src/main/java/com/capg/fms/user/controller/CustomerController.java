@@ -84,4 +84,5 @@ public class CustomerController {
 	return service.viewBookingByBookingId(bookingId);	
 		
 	}
+	
 }
