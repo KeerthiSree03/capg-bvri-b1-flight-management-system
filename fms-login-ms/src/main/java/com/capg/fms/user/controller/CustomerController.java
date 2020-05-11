@@ -15,6 +15,7 @@ import com.capg.fms.user.model.BookingList;
 import com.capg.fms.user.model.FlightList;
 import com.capg.fms.user.model.Passenger;
 import com.capg.fms.user.model.PassengerList;
+import com.capg.fms.user.model.ScheduledFlightList;
 import com.capg.fms.user.service.ICustomerService;
 
 @RestController
@@ -38,6 +39,7 @@ public class CustomerController {
 
 	@GetMapping("/availability/{flightNumber}/{availableSeats}")
 	public String checkSeatAvailability(@PathVariable long flightNumber, @PathVariable int availableSeats) {
+		System.err.println("Customer controller"+flightNumber+availableSeats);
 		return service.checkSeatAvailability(flightNumber, availableSeats);
 	}
 
@@ -117,6 +119,12 @@ public class CustomerController {
 	@GetMapping("/passenger/getcount")
 	public long getCountOfPassenger() {
 		return service.getCountOfPassenger();
+	}
+	
+	@GetMapping("/scheduledflights/all")
+	public ScheduledFlightList viewAllScheduledFlight() {
+		
+		return service.viewAllScheduledFlight();
 	}
 
 }

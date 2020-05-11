@@ -2,15 +2,14 @@ package com.capg.fms.user.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import org.springframework.web.client.RestTemplate;
 
 import com.capg.fms.user.model.Booking;
 import com.capg.fms.user.model.BookingList;
-
 import com.capg.fms.user.model.FlightList;
 import com.capg.fms.user.model.Passenger;
 import com.capg.fms.user.model.PassengerList;
+import com.capg.fms.user.model.ScheduledFlightList;
 
 @Service
 public class CustomerService implements ICustomerService {
@@ -28,7 +27,8 @@ public class CustomerService implements ICustomerService {
 	}
 
 	public String checkSeatAvailability(long flightNumber, int availableSeats) {
-		return restTemplate.getForObject("http://schedule-ms/availabilityflight/" + flightNumber + availableSeats,
+		System.err.println("Customer controller"+flightNumber+availableSeats);
+		return restTemplate.getForObject("http://schedule-ms/availabilityflight/" + flightNumber+"/" + availableSeats,
 				String.class);
 	}
 
@@ -108,6 +108,10 @@ public class CustomerService implements ICustomerService {
 	public long getCountOfPassenger() {
 
 		return restTemplate.getForObject("http://passenger-ms/passenger/getcount", long.class);
+	}
+	
+	public ScheduledFlightList viewAllScheduledFlight() {
+		return restTemplate.getForObject("http://schedule-ms/scheduleflight/viewall", ScheduledFlightList.class);
 	}
 
 }
