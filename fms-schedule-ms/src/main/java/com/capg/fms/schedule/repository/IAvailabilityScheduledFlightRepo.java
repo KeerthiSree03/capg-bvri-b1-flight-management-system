@@ -16,6 +16,10 @@ public interface IAvailabilityScheduledFlightRepo extends JpaRepository<Schedule
 
 	@Query(value = "SELECT CASE WHEN COUNT(c) > 0 THEN true ELSE false END FROM ScheduledFlight c WHERE c.availableSeats < :availableSeats")
 	public boolean exists(int availableSeats);
+
+	@Query(value = "select availableSeats from ScheduledFlight where flightNumber = 102")
+	public int getAvailableSeats(long flightNumber , int availableSeats);
+	
 	
 	
 }

@@ -11,7 +11,7 @@ public interface ICustomerService {
 	
 	FlightList viewAllFlights();
 	public String checkScheduledFlightById(long flightNumber);
-	public boolean checkSeatAvailability(long flightNumber, int availableSeats);
+	public String checkSeatAvailability(long flightNumber, int availableSeats);
 	public String checkSource(long flightNumber,String sourceAirport);
 	public String checkDestination(long flightNumber,String destinationAirport);
 	public String checkSourceAndDestination(String sourceAirport, String destinationAirport);

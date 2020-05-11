@@ -27,9 +27,9 @@ public class CustomerService implements ICustomerService {
 		return restTemplate.getForObject("http://schedule-ms/availabilityflight/" + flightNumber, String.class);
 	}
 
-	public boolean checkSeatAvailability(long flightNumber, int availableSeats) {
+	public String checkSeatAvailability(long flightNumber, int availableSeats) {
 		return restTemplate.getForObject("http://schedule-ms/availabilityflight/" + flightNumber + availableSeats,
-				boolean.class);
+				String.class);
 	}
 
 	public String checkSource(long flightNumber, String sourceAirport) {

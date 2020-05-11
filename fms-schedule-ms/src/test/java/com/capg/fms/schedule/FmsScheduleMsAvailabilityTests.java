@@ -67,9 +67,9 @@ class FmsScheduleMsAvailabilityTests {
 
 	
 
-	@Test
-	public void testAvailableSeats() {
-		assertTrue(availabilityService.checkSeatAvailability(446233628412L, 21));
-	}
+	/*
+	 * @Test public void testAvailableSeats() {
+	 * assertTrue(availabilityService.checkSeatAvailability(446233628412L, 21)); }
+	 */
 }
 

@@ -11,7 +11,7 @@ public interface IAvailabilityService {
 
 	String checkScheduledFlightById(long flightNumber);
 
-	boolean checkSeatAvailability(long flightNumber, int availableSeats);
+	String checkSeatAvailability(long flightNumber, int availableSeats);
 
 	String checkSource(long flightNumber, String sourceAirport);
 

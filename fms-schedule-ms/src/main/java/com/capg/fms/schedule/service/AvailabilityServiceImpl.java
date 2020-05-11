@@ -35,7 +35,8 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 
 		if (!flightRepository.existsByFlightNumber(flightNumber)) {
 
-			throw new InvalidInputException("No availability");
+			return "FlightNot available";
+			//throw new InvalidInputException("No Vailability");
 		}
 		return "The flight is available";
 	}
@@ -47,15 +48,18 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	 ***************************************************************************/
 
 	@Override
-	public boolean checkSeatAvailability(long flightNumber, int availableSeats) {
+	public String checkSeatAvailability(long flightNumber, int availableSeats) {
 
+		System.err.println(flightRepository.getAvailableSeats(flightNumber, availableSeats));
+		
 		if (!flightRepository.existsByFlightNumber(flightNumber)) {
 			throw new InvalidInputException("Please Check Flight Number");
-		} else if (flightRepository.existsAvailableSeats(availableSeats) != flightRepository.exists(availableSeats)
-				|| availableSeats <= 0) {
+		}
+		
+		else if (availableSeats > flightRepository.getAvailableSeats(flightNumber, availableSeats)) {
 			throw new InvalidInputException("No availability");
 		}
-		return true;
+		return "Flight Availabe";
 	}
 
 	/*************************************************************************

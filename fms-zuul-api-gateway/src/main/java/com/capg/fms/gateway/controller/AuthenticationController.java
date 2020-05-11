@@ -15,7 +15,7 @@ import com.capg.fms.gateway.service.MyUserDetailsService;
 import com.capg.fms.gateway.util.TokenUtil;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200",allowedHeaders ="*" )
+@CrossOrigin
 public class AuthenticationController {
 	
 	@Autowired
@@ -25,7 +25,7 @@ public class AuthenticationController {
 	@Autowired
 	TokenUtil tokenUtil;
 	
-	@PostMapping("/authenticate")
+	@PostMapping("/public/authenticate")
 	public AuthenticationResponse authenticate(@RequestBody UserCredentials cred) {
 		try {
 		UserInfo authenticatedUser=userDetailsService.loadUserByUserCrenditials(cred);

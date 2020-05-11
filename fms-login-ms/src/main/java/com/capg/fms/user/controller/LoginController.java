@@ -27,7 +27,7 @@ public class LoginController {
 	ILoginService service;
 	
 	
-	@PostMapping("/authenticate")
+	@PostMapping("/public/authenticate")
 	public User authenticateUser(@RequestBody UserCredentials credentials) {
 		User user=service.getUser(credentials.getUsername());
 		System.err.println(user);

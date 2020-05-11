@@ -20,7 +20,7 @@ public class AccountCreationController {
 	@Autowired
 	IUserAccountCreationService service;
 	
-	@PostMapping("/p/add")
+	@PostMapping("/public/add")
 	public ResponseEntity<User> addUser(@RequestBody User user) {
 		if(service.validateUserPhoneNo(user.getUserPhone()) && service.validateUserEmail(user.getUserEmail()) && service.validateUserId(user.getUserId()) && service.validateUserPassword(user.getUserPassword()) && service.validateUserType(user.getUserType()) && service.validateUserName(user.getUserName())) {
 			return new ResponseEntity<User>(service.addUser(user),HttpStatus.CREATED);
@@ -28,7 +28,7 @@ public class AccountCreationController {
 		return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);		
 	}
 	
-	@GetMapping("/p/{username}")
+	@GetMapping("/public/{username}")
 	public User getUserByUserName(@PathVariable String username) {
 		return service.getUserByUserName(username);			
 	}

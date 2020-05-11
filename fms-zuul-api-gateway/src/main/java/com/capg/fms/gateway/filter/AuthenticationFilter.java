@@ -33,29 +33,33 @@ public class AuthenticationFilter extends ZuulFilter{
 	        String token = request.getHeader("Authorization");
 	        System.out.println("token fetched from headers="+token);
 	        String uri=request.getRequestURI();
-	        
+	        System.out.println(uri);
 	       
 
 	        if (token != null && !token.isEmpty()) {
 	        	
 	        	UserCredentials cred=tokenUtil.decode(token);
 	        	UserInfo user=userDetailsService.loadUserByUserCrenditials(cred);
-	        	 if(uri.contains("users/a/")) {
+	        	 if(uri.contains("/admin")) {
 	        		 if(user.getUserType().equalsIgnoreCase("admin")) {
 	        			 return null;
 	        		 }
 	        	 }
-	        	 else if(uri.contains("users/u/")) {
+	        	 
+	        	 else if(uri.contains("/customer")) {
 	        		 if(user.getUserType().equalsIgnoreCase("user")) {
 	        			 return null;
 	        		 }
 	        	 }
-	        	 
-	        	 
 	        }
-	        else/* if(uri.contains("users/p/")) */{
-         		return null;
-         	 }
+	        	 
+	        
+	        
+	 if(uri.contains("/public")) {
+	        
+     	System.out.println("Public URL");
+  		return null;
+  	 }
 	       
 	        	
 	        	context.setSendZuulResponse(false);

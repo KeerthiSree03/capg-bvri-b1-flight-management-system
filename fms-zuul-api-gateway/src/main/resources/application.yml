@@ -6,18 +6,11 @@ server:
 zuul:
   routes:
    user-ms-admin:
-      path: /users/a/**
+      path: /users/**
       service-id: user-ms
       strip-prefix: false
-   user-ms-user:
-      path: /users/u/**
-      service-id: user-ms
-      strip-prefix: false
-      
-   user-ms-public:
-      path: /users/p/**
-      service-id: user-ms     
-      strip-prefix: false
+     
+ 
     
 #    booking-ms:
 #      path: /booking/**

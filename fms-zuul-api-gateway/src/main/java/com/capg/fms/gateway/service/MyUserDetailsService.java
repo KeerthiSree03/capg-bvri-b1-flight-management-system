@@ -19,7 +19,7 @@ public class MyUserDetailsService{
 	public UserInfo  loadUserByUserCrenditials(UserCredentials cred) {
 		UserInfo userInfo=null;
 		try {
-		userInfo = restTemplate.postForObject("http://user-ms/users/authenticate",cred, UserInfo.class);
+		userInfo = restTemplate.postForObject("http://user-ms/users/public/authenticate",cred, UserInfo.class);
 		}
 		catch (Exception e) {
 			return null;
