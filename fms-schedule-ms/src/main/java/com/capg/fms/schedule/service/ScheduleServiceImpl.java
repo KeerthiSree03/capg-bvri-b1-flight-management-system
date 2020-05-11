@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.capg.fms.schedule.excepions.ScheduleAlreadyExistsException;
 import com.capg.fms.schedule.excepions.ScheduledFlightNotFound;
 import com.capg.fms.schedule.model.Airport;
 import com.capg.fms.schedule.model.Flight;
@@ -58,6 +59,16 @@ public class ScheduleServiceImpl implements IScheduleService {
 
 		if (flightNumberFromFlight == null) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		if (repo.existsById(scheduledFlight.getScheduledFlightId())) {
+
+			throw new ScheduleAlreadyExistsException("ScheduledFlightId already exists");
+
+		}
+		if (repo.existsById(scheduledFlight.getSchedule().getScheduleId())) {
+
+			throw new ScheduleAlreadyExistsException("Schedule Id Already Exists");
+
 		}
 
 		System.err.println(scheduledFlight.getSchedule().getSourceAirport());
