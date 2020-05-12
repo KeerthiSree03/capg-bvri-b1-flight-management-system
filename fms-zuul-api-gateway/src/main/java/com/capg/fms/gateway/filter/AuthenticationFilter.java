@@ -14,7 +14,7 @@ import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 
 @Component
-public class AuthenticationFilter extends ZuulFilter{
+public class AuthenticationFilter extends ZuulFilter {
 
 	@Autowired
 	private MyUserDetailsService userDetailsService;
@@ -28,46 +28,42 @@ public class AuthenticationFilter extends ZuulFilter{
 
 	@Override
 	public Object run() throws ZuulException {
-	      RequestContext context = RequestContext.getCurrentContext();
-	        HttpServletRequest request = context.getRequest();
-	        String token = request.getHeader("Authorization");
-	        System.out.println("token fetched from headers="+token);
-	        String uri=request.getRequestURI();
-	        System.out.println(uri);
-	       
+		RequestContext context = RequestContext.getCurrentContext();
+		HttpServletRequest request = context.getRequest();
+		String token = request.getHeader("Authorization");
+		System.out.println("token fetched from headers=" + token);
+		String uri = request.getRequestURI();
+		System.out.println(uri);
 
-	        if (token != null && !token.isEmpty()) {
-	        	
-	        	UserCredentials cred=tokenUtil.decode(token);
-	        	UserInfo user=userDetailsService.loadUserByUserCrenditials(cred);
-	        	 if(uri.contains("/admin")) {
-	        		 if(user.getUserType().equalsIgnoreCase("admin")) {
-	        			 return null;
-	        		 }
-	        	 }
-	        	 
-	        	 else if(uri.contains("/customer")) {
-	        		 if(user.getUserType().equalsIgnoreCase("user")) {
-	        			 return null;
-	        		 }
-	        	 }
-	        }
-	        	 
-	        
-	        
-	 if(uri.contains("/public")) {
-	        
-     	System.out.println("Public URL");
-  		return null;
-  	 }
-	       
-	        	
-	        	context.setSendZuulResponse(false);
-	        	context.setResponseStatusCode(401);
-	        	context.setResponseBody("Unauthorized");
-	        	return null;
-	        	
-	        }
+		if (token != null && !token.isEmpty()) {
+
+			UserCredentials cred = tokenUtil.decode(token);
+			UserInfo user = userDetailsService.loadUserByUserCrenditials(cred);
+			if (uri.contains("/admin")) {
+				if (user.getUserType().equalsIgnoreCase("admin")) {
+					return null;
+				}
+			}
+
+			else if (uri.contains("/customer")) {
+				if (user.getUserType().equalsIgnoreCase("user")) {
+					return null;
+				}
+			}
+		}
+
+		if (uri.contains("/public")) {
+
+			System.out.println("Public URL");
+			return null;
+		}
+
+		context.setSendZuulResponse(false);
+		context.setResponseStatusCode(401);
+		context.setResponseBody("Unauthorized");
+		return null;
+
+	}
 
 	@Override
 	public String filterType() {
