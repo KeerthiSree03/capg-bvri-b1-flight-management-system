@@ -27,8 +27,7 @@ public class CustomerService implements ICustomerService {
 	}
 
 	public String checkSeatAvailability(long flightNumber, int availableSeats) {
-		System.err.println("Customer controller"+flightNumber+availableSeats);
-		return restTemplate.getForObject("http://schedule-ms/availabilityflight/" + flightNumber+"/" + availableSeats,
+		return restTemplate.getForObject("http://schedule-ms/availabilityflight/" + flightNumber + "/" + availableSeats,
 				String.class);
 	}
 
@@ -43,7 +42,8 @@ public class CustomerService implements ICustomerService {
 	}
 
 	public String checkSourceAndDestination(String sourceAirport, String destinationAirport) {
-		return restTemplate.getForObject("http://schedule-ms/availabilityflight/"+ sourceAirport + destinationAirport,String.class);
+		return restTemplate.getForObject("http://schedule-ms/availabilityflight/" + sourceAirport + destinationAirport,
+				String.class);
 	}
 
 	@Override
@@ -64,52 +64,44 @@ public class CustomerService implements ICustomerService {
 
 	@Override
 	public Booking modifyBooking(Booking booking) {
-
 		return restTemplate.postForObject("http://booking-ms/booking/modify", booking, Booking.class);
 	}
 
 	@Override
 	public Booking viewBookingByBookingId(long bookingId) {
-
 		return restTemplate.getForObject("http://booking-ms/booking/id/" + bookingId, Booking.class);
 	}
 
 	@Override
 	public Passenger addPassenger(Passenger passenger) {
-
 		return restTemplate.postForObject("http://passenger-ms/passenger/add", passenger, Passenger.class);
 	}
 
 	@Override
 	public void deletePassenger(long passengerNum) {
-
 		restTemplate.delete("http://passenger-ms/passenger/delete/num/" + passengerNum);
 	}
 
 	@Override
 	public Passenger getPassenger(long passengerNum) {
-
 		return restTemplate.getForObject("http://passenger-ms/passenger/num/" + passengerNum, Passenger.class);
 	}
 
 	@Override
 	public PassengerList getAllPasssengers() {
-
 		return restTemplate.getForObject("http://passenger-ms/passenger/all", PassengerList.class);
 	}
 
 	@Override
 	public Passenger updatePassenger(Passenger passenger) {
-
 		return restTemplate.postForObject("http://passenger-ms/passenger/update", passenger, Passenger.class);
 	}
 
 	@Override
 	public long getCountOfPassenger() {
-
 		return restTemplate.getForObject("http://passenger-ms/passenger/getcount", long.class);
 	}
-	
+
 	public ScheduledFlightList viewAllScheduledFlight() {
 		return restTemplate.getForObject("http://schedule-ms/scheduleflight/viewall", ScheduledFlightList.class);
 	}

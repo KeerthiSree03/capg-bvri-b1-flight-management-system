@@ -11,7 +11,6 @@ public class Passenger {
 
 	public Passenger() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Passenger(long passengerNum, String passengerName, int passengerAge, long passengerUIN, double luggage) {

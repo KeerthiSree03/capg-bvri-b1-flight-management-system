@@ -8,13 +8,11 @@ public class Booking {
     
 	
 	private String  bookingId;
-    private String userId;                  //private User userId;
-    //@JsonFormat(pattern="yyyy-MM-dd")
+    private String userId;                    
 	private String bookingDate;
-	//@ElementCollection
-	private List<String> passengerList;     //private List<Passenger> passengerList;
+	private List<String> passengerList;     
 	private String  ticketCost;
-	private String flightNumber;            //private Flight flight;
+	private String flightNumber;            
 	private String noOfPassengers;
 
 	public Booking() {	}

@@ -13,4 +13,8 @@ public interface IPassengerService {
 	Passenger updatePassenger(Passenger passenger);
 	public long getCountOfPassenger();
 //	 Passenger getByPassengerName(String passengerName);
+	boolean validatePassengerUIN(long passengerUIN);
+	boolean validatePassengerNumber(long passengerNum);
+	boolean validatePassengerName(String passengerName);
+	boolean validatePassengerAge(int passengerAge);
 }

@@ -21,7 +21,6 @@ public class BookingList {
 
 	public BookingList() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

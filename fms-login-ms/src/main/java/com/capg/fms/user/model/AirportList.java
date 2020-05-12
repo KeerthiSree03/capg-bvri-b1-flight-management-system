@@ -26,7 +26,7 @@ public class AirportList {
 
 	public AirportList() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	

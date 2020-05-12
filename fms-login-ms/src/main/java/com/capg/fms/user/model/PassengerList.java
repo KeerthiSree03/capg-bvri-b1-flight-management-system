@@ -21,7 +21,6 @@ public class PassengerList {
 
 	public PassengerList() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
