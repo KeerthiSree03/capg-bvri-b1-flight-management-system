@@ -1,20 +1,12 @@
 package com.capg.fms.login;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.List;
-
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import com.capg.fms.user.exceptions.InvalidInputException;
-import com.capg.fms.user.exceptions.InvalidUserNameAndPasswordException;
-import com.capg.fms.user.model.User;
 import com.capg.fms.user.repository.IUserJpaRepo;
 import com.capg.fms.user.service.ILoginService;
 import com.capg.fms.user.service.IUserAccountCreationService;

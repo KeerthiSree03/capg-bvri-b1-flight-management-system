@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.capg.fms.user.model.Booking;
 import com.capg.fms.user.model.BookingList;
 import com.capg.fms.user.model.FlightList;
@@ -27,7 +26,6 @@ public class CustomerController {
 
 	@GetMapping("/flights/all")
 	public FlightList viewAllFlights() {
-
 		return service.viewAllFlights();
 	}
 
@@ -38,7 +36,6 @@ public class CustomerController {
 
 	@GetMapping("/availability/{flightNumber}/{availableSeats}")
 	public String checkSeatAvailability(@PathVariable long flightNumber, @PathVariable int availableSeats) {
-		System.err.println("Customer controller"+flightNumber+availableSeats);
 		return service.checkSeatAvailability(flightNumber, availableSeats);
 	}
 
@@ -55,32 +52,27 @@ public class CustomerController {
 	@GetMapping("/source/{sourceAirport}/destination/{destinationAirport}")
 	public String checkSourceAndDestination(@PathVariable String sourceAirport,
 			@PathVariable String destinationAirport) {
-
 		return service.checkSourceAndDestination(sourceAirport, destinationAirport);
 	}
 
 	@PostMapping("/booking/add")
 	public Booking makeBooking(@RequestBody Booking booking) {
-
 		return service.makeBooking(booking);
- 
+
 	}
 
 	@GetMapping("/booking/all")
 	public BookingList viewBookingList() {
-
 		return service.viewBookingList();
 	}
 
 	@DeleteMapping("/delete/{bookingId}")
 	public void cancelBooking(@PathVariable long bookingId) {
-
 		service.cancelBooking(bookingId);
 	}
 
 	@PostMapping("/booking/modify")
 	public Booking modifyBooking(@RequestBody Booking booking) {
-
 		return service.modifyBooking(booking);
 	}
 
@@ -91,27 +83,27 @@ public class CustomerController {
 	}
 
 	@PostMapping("/passenger/add")
-	Passenger addPassenger(Passenger passenger) {
+	public Passenger addPassenger(Passenger passenger) {
 		return service.addPassenger(passenger);
 	}
 
 	@DeleteMapping("/passenger/delete/num/{passengerNum}")
-	void deletePassenger(long passengerNum) {
+	public void deletePassenger(long passengerNum) {
 		service.deletePassenger(passengerNum);
 	}
 
 	@GetMapping("/passenger/num/{passengerNum}")
-	Passenger getPassenger(long passengerNum) {
+	public Passenger getPassenger(long passengerNum) {
 		return service.getPassenger(passengerNum);
 	}
 
 	@GetMapping("/passenger/all")
-	PassengerList getAllPasssengers() {
+	public PassengerList getAllPasssengers() {
 		return service.getAllPasssengers();
 	}
 
 	@PostMapping("/passenger/update")
-	Passenger updatePassenger(Passenger passenger) {
+	public Passenger updatePassenger(Passenger passenger) {
 		return service.updatePassenger(passenger);
 	}
 
@@ -119,10 +111,9 @@ public class CustomerController {
 	public long getCountOfPassenger() {
 		return service.getCountOfPassenger();
 	}
-	
+
 	@GetMapping("/scheduledflights/all")
 	public ScheduledFlightList viewAllScheduledFlight() {
-		
 		return service.viewAllScheduledFlight();
 	}
 
