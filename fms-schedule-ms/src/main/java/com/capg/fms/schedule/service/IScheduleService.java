@@ -21,6 +21,6 @@ public interface IScheduleService {
 	public ScheduledFlight modifyScheduledFlight(int scheduledFlightId, int availableSeats, long flightNumber,
 			Schedule schedule);
 
-	public void deleteScheduledFlight(int scheduleId);
+	public void deleteScheduledFlight(int scheduledFlightId);
 
 }

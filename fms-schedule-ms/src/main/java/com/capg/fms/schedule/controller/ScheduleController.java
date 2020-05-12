@@ -55,6 +55,7 @@ public class ScheduleController {
 
 	@DeleteMapping("/delete/{scheduledFlightId}")
 	public ResponseEntity<ScheduledFlight> deleteScheduledFlight(@PathVariable int scheduledFlightId) {
+		System.err.println("schedule-controller"+scheduledFlightId);
 		service.deleteScheduledFlight(scheduledFlightId);
 		return new ResponseEntity<ScheduledFlight>(HttpStatus.OK);
 	}

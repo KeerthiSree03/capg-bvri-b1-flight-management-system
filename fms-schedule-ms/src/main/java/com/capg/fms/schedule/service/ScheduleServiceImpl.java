@@ -92,11 +92,11 @@ public class ScheduleServiceImpl implements IScheduleService {
 	}
 
 	@Override
-	public void deleteScheduledFlight(int scheduleId) {
-		if (!repo.existsById(scheduleId)) {
+	public void deleteScheduledFlight(int scheduledFlightId) {
+		if (!repo.existsById(scheduledFlightId)) {
 			throw new ScheduledFlightNotFound("Scheduled Flight not found");
 		}
-		repo.deleteById(scheduleId);
+		repo.deleteById(scheduledFlightId);
 
 	}
 
