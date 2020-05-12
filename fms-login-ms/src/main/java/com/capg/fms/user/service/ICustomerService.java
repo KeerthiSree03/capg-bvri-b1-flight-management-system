@@ -6,6 +6,7 @@ import com.capg.fms.user.model.BookingList;
 import com.capg.fms.user.model.FlightList;
 import com.capg.fms.user.model.Passenger;
 import com.capg.fms.user.model.PassengerList;
+import com.capg.fms.user.model.ScheduledFlightList;
 
 public interface ICustomerService {
 	
@@ -30,4 +31,5 @@ public interface ICustomerService {
 	Passenger updatePassenger(Passenger passenger);
 	public long getCountOfPassenger();
 
+	public ScheduledFlightList viewAllScheduledFlight();
 }

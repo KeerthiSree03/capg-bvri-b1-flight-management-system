@@ -30,7 +30,7 @@ public class AvailabilityController {
 	}
 
 	@GetMapping("/{flightNumber}/{availableSeats}")
-	public String checkSeatAvailability(@PathVariable long flightNumber, @PathVariable int availableSeats) {
+	public boolean checkSeatAvailability(@PathVariable long flightNumber, @PathVariable int availableSeats) {
 	
 		System.err.println("Availability-controller"+flightNumber+availableSeats);
 		return service.checkSeatAvailability(flightNumber, availableSeats);
