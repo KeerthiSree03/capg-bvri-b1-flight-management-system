@@ -13,7 +13,7 @@ public class FlightList {
 
 	public FlightList() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public List<Flight> getFlightList() {

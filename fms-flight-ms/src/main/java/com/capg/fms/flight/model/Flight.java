@@ -15,38 +15,15 @@ import javax.validation.constraints.Size;
 public class Flight {
     @Id
    
-   // @GeneratedValue(strategy=GenerationType.SEQUENCE)
+
     private long flightNumber;
-    
-  
-//    @NotEmpty(message="FlightModel is Mandatory field, Please provide flighttModel")
-//    @Size(min=4, message="Name should have atleast:4 characters")
 	private String flightModel;
-    
-	/*
-	 * @NotEmpty(
-	 * message="CarrierName is Mandatory field, Please provide carrierName")
-	 * 
-	 * @Size(min=4, message="Name should have atleast:4 characters")
-	 */
     private String carrierName;
-    
-  
-	/*
-	 * //@NotEmpty(
-	 * message="FlightModel is Mandatory field, Please provide flighttModel")
-	 * 
-	 * @NotNull(message="SeatCapacity cannot be null")
-	 * 
-	 * @Min(value=1,message="SeatCapacity cannot be smaller than 1")
-	 * 
-	 * @Max(value=100,message="SeatCapacity cannot be greater than 100")
-	 */
     private int seatCapacity;
     
 	public Flight() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Flight(long flightNumber, String flightModel, String carrierName, int seatCapacity) {
@@ -93,12 +70,5 @@ public class Flight {
 	public String toString() {
 		return "Flight [flightNumber=" + flightNumber + ", flightModel=" + flightModel + ", carrierName=" + carrierName
 				+ ", seatCapacity=" + seatCapacity + "]";
-	}
-    
-	
-    
-    
-    
-    
-
+	}  
 }

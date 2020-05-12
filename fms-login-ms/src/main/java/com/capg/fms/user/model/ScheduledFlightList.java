@@ -13,7 +13,6 @@ public class ScheduledFlightList {
 
 	public ScheduledFlightList() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public List<ScheduledFlight> getScheduledFlightList() {

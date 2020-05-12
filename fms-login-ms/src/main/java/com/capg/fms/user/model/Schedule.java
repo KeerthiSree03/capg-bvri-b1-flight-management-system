@@ -3,16 +3,8 @@ package com.capg.fms.user.model;
 public class Schedule {
 
 	
-	private int scheduleId;// not mentioned in case study .......
-	
-	//private Airport sourceAirport;
-
-
+	private int scheduleId;
 	private String sourceAirport;
-	
-	
-	//private Airport destinationAirport;
-	
 	private String destinationAirport;
 
 	private String arrivalTime;
@@ -21,7 +13,6 @@ public class Schedule {
 
 	public Schedule() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Schedule(int scheduleId, String sourceAirport, String destinationAirport, String arrivalTime,

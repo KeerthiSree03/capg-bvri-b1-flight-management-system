@@ -105,7 +105,7 @@ public class UserAccountCreationServiceImpl implements IUserAccountCreationServi
 		
 	public boolean validateUserId(long id) {
 		int count=0;
-		long p=id;
+
 		long d;
 		while(id>0) {
 			d=id % 10;
