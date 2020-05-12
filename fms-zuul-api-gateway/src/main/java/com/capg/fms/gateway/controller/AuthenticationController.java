@@ -17,31 +17,29 @@ import com.capg.fms.gateway.util.TokenUtil;
 @RestController
 @CrossOrigin
 public class AuthenticationController {
-	
+
 	@Autowired
 	MyUserDetailsService userDetailsService;
-	
-	
+
 	@Autowired
 	TokenUtil tokenUtil;
-	
+
 	@PostMapping("/public/authenticate")
 	public AuthenticationResponse authenticate(@RequestBody UserCredentials cred) {
 		try {
-		UserInfo authenticatedUser=userDetailsService.loadUserByUserCrenditials(cred);
-		System.err.println(authenticatedUser);
-		 if(authenticatedUser==null) {
-			 throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
-		 }
-			String token=tokenUtil.generateToken(cred.getUsername(), cred.getPassword());
-			
-			AuthenticationResponse tokenResponse=new AuthenticationResponse(token);
-		
+			UserInfo authenticatedUser = userDetailsService.loadUserByUserCrenditials(cred);
+			System.err.println(authenticatedUser);
+			if (authenticatedUser == null) {
+				throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+			}
+			String token = tokenUtil.generateToken(cred.getUsername(), cred.getPassword());
+
+			AuthenticationResponse tokenResponse = new AuthenticationResponse(token);
+
 			return tokenResponse;
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
 		}
 	}
-	
+
 }
