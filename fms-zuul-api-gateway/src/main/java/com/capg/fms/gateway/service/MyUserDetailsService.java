@@ -23,7 +23,7 @@ public class MyUserDetailsService{
 		}
 		catch (Exception e) {
 			return null;
-			}
+		}
 		if(userInfo==null) {
 			return null;
 		}
