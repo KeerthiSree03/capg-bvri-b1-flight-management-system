@@ -1,4 +1,4 @@
-package com.capg.fms.login;
+package com.capg.fms.user;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -12,7 +12,7 @@ import com.capg.fms.user.service.ILoginService;
 import com.capg.fms.user.service.IUserAccountCreationService;
 
 @SpringBootTest
-class FmsUserMsApplicationTests {
+class FmsUserMsApplicationTests{
 	
 	@Autowired
 	IUserAccountCreationService userService;
@@ -107,5 +107,35 @@ class FmsUserMsApplicationTests {
 		assertEquals(true, userService.validateUserName("Keerthi2Sree3"));
 	}
 	
+	@Test
+	public void testInvalidUserName() {
+		Exception exception = assertThrows(InvalidInputException.class, () -> {
+			userService.validateUserName("gasf@hgdfh");
+		    });
+		 
+		    String expectedMessage = "Username should contain atleast 8 characters and can be alphanumeric ONLY";
+		    String actualMessage = exception.getMessage();
+		 
+		    assertTrue(actualMessage.contains(expectedMessage));
+		
+	}
+	
+	@Test
+	public void testValidUserPassword() {
+		assertEquals(true, userService.validateUserPassword("abKef56@&#ghijk"));
+	}
+	
+	@Test
+	public void testInvalidUserPassword() {
+		Exception exception = assertThrows(InvalidInputException.class, () -> {
+			userService.validateUserPassword("abcdefghi45@$%hgj");
+		    });
+		 
+		    String expectedMessage = "Password can contain:- [uppercase, lowercase, numeric,{'@','&','#'} ONLY and should be of at least 8 characters]";
+		    String actualMessage = exception.getMessage();
+		 
+		    assertTrue(actualMessage.contains(expectedMessage));
+		
+	}
 	
 }

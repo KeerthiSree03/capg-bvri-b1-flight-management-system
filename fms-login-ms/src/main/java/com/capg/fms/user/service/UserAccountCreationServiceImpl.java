@@ -10,12 +10,10 @@ package com.capg.fms.user.service;
 import java.util.Arrays;
 
 import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import com.capg.fms.user.exceptions.InvalidInputException;
 import com.capg.fms.user.model.User;
 import com.capg.fms.user.repository.IUserJpaRepo;
@@ -105,10 +103,8 @@ public class UserAccountCreationServiceImpl implements IUserAccountCreationServi
 		
 	public boolean validateUserId(long id) {
 		int count=0;
-
-		long d;
 		while(id>0) {
-			d=id % 10;
+			long denominator=id % 10;
 			count++;
 			id=id/10;
 		}
@@ -129,12 +125,12 @@ public class UserAccountCreationServiceImpl implements IUserAccountCreationServi
 	***************************************************************************/
 	
 	public boolean validateUserPassword(String password) {
-		String regex="[(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$])]{8,}";
+		String regex="[?=.*[a-zA-Z0-9@#&]]{8,}";
 		if(password.matches(regex)) {
 			return true;
 		}
 		else 
-			throw new InvalidInputException("Password should contain:- [uppercase ,lowercase ,numeric ,any of these characters={'@','$','#'} ,should contain atleast 8 characters]");
+			throw new InvalidInputException("Password can contain:- [uppercase, lowercase, numeric,{'@','&','#'} ONLY and should be of at least 8 characters]");
 	}
 	/*************************************************************************
 	 -FunctionName          : validateUserName
@@ -147,9 +143,9 @@ public class UserAccountCreationServiceImpl implements IUserAccountCreationServi
 	
 	public boolean validateUserName(String userName) {
 		
-		String regex="[(?=.*[A-Za-z])(?=.*[0-9].{2,4})]{8,}";
+		String regex="[?=.*[a-zA-Z0-9]]{8,}";
 		if(!userName.matches(regex)) {
-			throw new InvalidInputException("Username should contain atleast 8 alphanumeric characters");
+			throw new InvalidInputException("Username should contain atleast 8 characters and can be alphanumeric ONLY");
 			
 		}
 		return true;

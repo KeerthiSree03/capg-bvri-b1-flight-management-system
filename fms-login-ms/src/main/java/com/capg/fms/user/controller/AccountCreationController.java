@@ -28,7 +28,7 @@ public class AccountCreationController {
 	
 	@PostMapping("/public/add")
 	public ResponseEntity<User> addUser(@RequestBody User user) {
-		if(service.validateUserPhoneNo(user.getUserPhone()) && service.validateUserEmail(user.getUserEmail()) && service.validateUserId(user.getUserId()) && service.validateUserPassword(user.getUserPassword()) && service.validateUserType(user.getUserType()) && service.validateUserName(user.getUserName())) {
+		if(service.validateUserPhoneNo(user.getUserPhone()) && service.validateUserEmail(user.getUserEmail()) &&  service.validateUserPassword(user.getUserPassword()) && service.validateUserType(user.getUserType()) && service.validateUserName(user.getUserName())) {
 			return new ResponseEntity<User>(service.addUser(user),HttpStatus.CREATED);
 		}
 		return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);		
